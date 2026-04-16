@@ -54,6 +54,7 @@ tailwind.config = {
   --divide:      #E5E7E2;
   --hero-ol-a:   transparent;
   --hero-ol-b:   transparent;
+  --gallery-nav-gap: 5.5rem;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -459,7 +460,95 @@ h1.hero-title {
 }
 
 #gallery {
-  scroll-margin-top: 5.5rem;
+  scroll-margin-top: var(--gallery-nav-gap);
+}
+
+@media (min-width: 1024px) {
+  #gallery.gallery-vh {
+    box-sizing: border-box;
+    height: calc(100svh - var(--gallery-nav-gap));
+    max-height: calc(100svh - var(--gallery-nav-gap));
+    min-height: calc(100svh - var(--gallery-nav-gap));
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #gallery.gallery-vh .gallery-vh-inner {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #gallery.gallery-vh .gallery-intro {
+    flex-shrink: 0;
+  }
+
+  #gallery.gallery-vh .gallery-photo-shell {
+    flex: 1 1 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #gallery.gallery-vh #gallery-photo-track {
+    flex: 1;
+    min-height: 0;
+  }
+
+  #gallery.gallery-vh .gallery-carousel-slide {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  #gallery.gallery-vh .gallery-photo-frame {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: auto;
+    max-height: 100%;
+  }
+
+  #gallery.gallery-vh .gallery-photo-frame img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #gallery.gallery-vh .gallery-video-shell {
+    flex-shrink: 0;
+  }
+
+  #gallery.gallery-vh #gallery-video-track {
+    min-height: 0;
+  }
+
+  #gallery.gallery-vh .gallery-video-wrap {
+    max-height: clamp(7rem, 22svh, 13rem);
+  }
+
+  #gallery.gallery-vh .gallery-video-wrap video {
+    max-height: clamp(7rem, 22svh, 13rem);
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  #gallery.gallery-vh .gallery-carousel-dots {
+    margin-top: 0.35rem;
+    flex-shrink: 0;
+  }
 }
 
 .cookie-banner {
@@ -1069,115 +1158,117 @@ h1.hero-title {
 </section>
 
 
-<section id="gallery" class="py-32" style="background:var(--bg-mid)">
-  <div class="max-w-screen-xl mx-auto px-8">
-    <div class="text-label uppercase tracking-[0.1em] mb-5" style="color:var(--lime)" data-i18n="gallery.label">Медиа</div>
-    <h2 class="text-headline font-semibold mb-4" style="color:var(--text)" data-i18n="gallery.title">Галерея</h2>
-    <p class="text-body-lg mb-14 max-w-2xl" style="color:var(--muted)" data-i18n="gallery.desc">Фото и видео с полей и производства.</p>
+<section id="gallery" class="py-32 lg:py-0 gallery-vh" style="background:var(--bg-mid)">
+  <div class="max-w-screen-xl mx-auto px-8 w-full gallery-vh-inner">
+    <div class="gallery-intro">
+    <div class="text-label uppercase tracking-[0.1em] mb-5 lg:mb-2" style="color:var(--lime)" data-i18n="gallery.label">Медиа</div>
+    <h2 class="text-headline font-semibold mb-4 lg:mb-2 leading-tight" style="color:var(--text)" data-i18n="gallery.title">Галерея</h2>
+    <p class="text-body-lg mb-14 lg:mb-3 max-w-2xl" style="color:var(--muted)" data-i18n="gallery.desc">Фото и видео с полей и производства.</p>
+    </div>
 
-    <h3 class="text-title font-semibold mb-6" style="color:var(--text)" data-i18n="gallery.photos">Фото</h3>
-    <div class="gallery-carousel-shell relative mb-16">
+    <h3 class="text-title font-semibold mb-6 lg:mb-1 shrink-0" style="color:var(--text)" data-i18n="gallery.photos">Фото</h3>
+    <div class="gallery-carousel-shell relative mb-16 lg:mb-2 gallery-photo-shell">
       <button type="button" class="gallery-carousel-arrow gallery-carousel-arrow--prev" data-i18n-aria="gallery.aria_prev" aria-label="Предыдущий слайд">
         <span class="material-symbols-outlined" style="font-size:28px">chevron_left</span>
       </button>
       <div id="gallery-photo-track" class="gallery-carousel-track" tabindex="0">
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.40.23.webp" alt="" class="w-full h-full object-cover" loading="eager" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.40.25.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.40.27.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.40.29.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.40.33.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.40.35%20(1).webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.40.38.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.40.40.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.40.42.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.40.45.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.40.59.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.41.02.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.41.08.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.41.14.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.41.20.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.41.25.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.41.29.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.41.31.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.41.34.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
         <div class="gallery-carousel-slide px-1 sm:px-0">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+          <div class="gallery-photo-frame rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
             <img src="/gallery/photo_2026-04-16%2023.41.36.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
           </div>
         </div>
@@ -1185,11 +1276,11 @@ h1.hero-title {
       <button type="button" class="gallery-carousel-arrow gallery-carousel-arrow--next" data-i18n-aria="gallery.aria_next" aria-label="Следующий слайд">
         <span class="material-symbols-outlined" style="font-size:28px">chevron_right</span>
       </button>
-      <div class="gallery-carousel-dots mt-5 flex justify-center gap-2" data-carousel-dots-for="gallery-photo-track" role="tablist"></div>
+      <div class="gallery-carousel-dots mt-5 lg:mt-2 flex justify-center gap-2" data-carousel-dots-for="gallery-photo-track" role="tablist"></div>
     </div>
 
-    <h3 class="text-title font-semibold mb-6" style="color:var(--text)" data-i18n="gallery.videos">Видео</h3>
-    <div class="gallery-carousel-shell gallery-carousel-shell--single relative">
+    <h3 class="text-title font-semibold mb-6 lg:mb-1 shrink-0" style="color:var(--text)" data-i18n="gallery.videos">Видео</h3>
+    <div class="gallery-carousel-shell gallery-carousel-shell--single relative gallery-video-shell">
       <button type="button" class="gallery-carousel-arrow gallery-carousel-arrow--prev" data-i18n-aria="gallery.aria_prev" aria-label="Предыдущий слайд">
         <span class="material-symbols-outlined" style="font-size:28px">chevron_left</span>
       </button>
@@ -1205,7 +1296,7 @@ h1.hero-title {
       <button type="button" class="gallery-carousel-arrow gallery-carousel-arrow--next" data-i18n-aria="gallery.aria_next" aria-label="Следующий слайд">
         <span class="material-symbols-outlined" style="font-size:28px">chevron_right</span>
       </button>
-      <div class="gallery-carousel-dots mt-5 flex justify-center gap-2" data-carousel-dots-for="gallery-video-track" role="tablist"></div>
+      <div class="gallery-carousel-dots mt-5 lg:mt-2 flex justify-center gap-2" data-carousel-dots-for="gallery-video-track" role="tablist"></div>
     </div>
   </div>
 </section>
