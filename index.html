@@ -280,6 +280,86 @@ body {
 }
 .lang-option:hover { background: var(--bg-card); color: var(--text); }
 .lang-option.active { color: var(--lime); font-weight: 600; }
+
+/* Hero title — desktop stays fixed (explicit <br/> + nowrap).
+   Mobile becomes fluid: <br/> hidden, text-wrap balance, adaptive size.
+   h1.hero-title boosts specificity so this wins over Tailwind's .text-display. */
+h1.hero-title {
+  white-space: nowrap;
+  line-height: 1.08;
+}
+@media (max-width: 768px) {
+  h1.hero-title {
+    white-space: normal;
+    line-height: 1.12;
+    font-size: clamp(30px, 8.4vw, 44px);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+  h1.hero-title br { display: none; }
+}
+
+/* Inline SVG arrow used inside CTA buttons / links.
+   Inherits text color via stroke=currentColor. */
+.btn-arrow {
+  display: inline-block;
+  width: 0.95em;
+  height: 0.95em;
+  vertical-align: -0.08em;
+  margin-left: 0.5em;
+  flex-shrink: 0;
+  stroke: currentColor;
+}
+
+/* Mobile-only fixes (<=768px) */
+@media (max-width: 768px) {
+  /* Application / dosage table — horizontal scroll wrapper.
+     Keeps desktop grid intact, only becomes scrollable on narrow screens.
+     Inner min-width ensures 4 columns stay readable without cramped wrapping. */
+  .apply-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-inline: -2rem;
+    padding-inline: 2rem;
+    scrollbar-width: thin;
+  }
+  .apply-table-scroll > div {
+    min-width: 720px;
+  }
+
+  /* Pill buttons — allow natural multi-line growth, no mid-word hyphenation. */
+  .btn-amber, .btn-ghost, a.rounded-full {
+    white-space: normal;
+    word-break: keep-all;
+    -webkit-hyphens: none;
+    hyphens: none;
+    overflow-wrap: normal;
+    line-height: 1.3;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  /* Hero chips — compact single-row horizontal scroll instead of awkward wrapping.
+     Each chip stays on one line, row scrolls sideways with hidden scrollbar.
+     div.hero-chips raises specificity above Tailwind's .flex-wrap utility. */
+  div.hero-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* bleed to viewport edges so the scroll row looks intentional */
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+    padding-bottom: 2px;
+  }
+  div.hero-chips::-webkit-scrollbar { display: none; }
+  div.hero-chips > span {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}
 </style>
 </head>
 
@@ -287,7 +367,7 @@ body {
 
 <!-- NAV -->
 <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
-  <div class="max-w-screen-xl mx-auto px-8 h-16 flex items-center justify-between">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between gap-3">
     <a href="#" class="flex items-center">
       <img src="/cytologo.svg" alt="CYTOCHELAT" class="h-8 w-auto"/>
     </a>
@@ -322,13 +402,13 @@ body {
 
 
 <!-- HERO -->
-<section class="relative overflow-hidden" style="height:100svh;background:var(--bg)">
+<section class="relative overflow-hidden" style="height:100vh;height:100svh;height:100dvh;min-height:560px;background:var(--bg)">
   <img src="/wheat.png" alt="" class="absolute inset-0 w-full h-full object-cover" style="z-index:0;object-position:50% 20%"/>
   <div class="absolute left-0 right-0 bottom-0" style="top:64px;background:linear-gradient(to right, var(--hero-ol-a) 0%, var(--hero-ol-b) 45%, transparent 100%);z-index:1"></div>
 
   <div class="absolute left-0 right-0 z-10" style="top:calc(64px + 24px)">
-    <div class="max-w-screen-xl mx-auto px-8">
-      <div class="flex flex-wrap gap-2">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+      <div class="hero-chips flex flex-wrap gap-2">
         <span class="px-3 py-1 rounded-full text-label font-medium uppercase" style="background:rgba(248,250,245,0.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(248,250,245,0.35);color:var(--text)" data-i18n="hero.chip1">Bio-технология</span>
         <span class="px-3 py-1 rounded-full text-label font-medium uppercase" style="background:rgba(248,250,245,0.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(248,250,245,0.35);color:var(--text)" data-i18n="hero.chip2">NANO-5 хелаты</span>
         <span class="px-3 py-1 rounded-full text-label font-medium uppercase" style="background:rgba(248,250,245,0.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(248,250,245,0.35);color:var(--text)" data-i18n="hero.chip3">восстановление почвы</span>
@@ -338,9 +418,9 @@ body {
   </div>
 
   <div class="absolute inset-0 flex items-center z-10" style="top:64px">
-    <div class="max-w-screen-xl mx-auto px-8 w-full">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8 w-full">
       <div class="max-w-xl">
-        <h1 class="text-display font-semibold mb-5" style="color:var(--text);white-space:nowrap;line-height:1.08" data-i18n-html="hero.title">
+        <h1 class="text-display font-semibold mb-5 hero-title" style="color:var(--text)" data-i18n-html="hero.title">
           Живая почва.<br/>
           Здоровый урожай.<br/>
           <span style="color:var(--lime)">Сильная экономика.</span>
@@ -352,7 +432,7 @@ body {
 
         <div class="flex flex-wrap items-center gap-4">
           <a href="#about" class="btn-amber px-8 py-3 glow-amber" style="font-size:0.875rem;font-weight:500;letter-spacing:normal;text-transform:none" data-i18n="hero.cta1">Узнать больше</a>
-          <a href="#cta" class="px-8 py-3 rounded-full text-sm font-medium" style="background:rgba(248,250,245,0.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(248,250,245,0.35);color:var(--text);transition:background 0.15s" onmouseover="this.style.background='rgba(248,250,245,0.75)'" onmouseout="this.style.background='rgba(248,250,245,0.18)'" data-i18n-html="hero.cta2">Запросить консультацию &ensp;↗</a>
+          <a href="#cta" class="px-8 py-3 rounded-full text-sm font-medium" style="background:rgba(248,250,245,0.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(248,250,245,0.35);color:var(--text);transition:background 0.15s" onmouseover="this.style.background='rgba(248,250,245,0.75)'" onmouseout="this.style.background='rgba(248,250,245,0.18)'" data-i18n-html="hero.cta2">Запросить консультацию<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </div>
       </div>
     </div>
@@ -405,7 +485,7 @@ body {
 
       <div class="flex gap-3">
         <a href="#products" class="btn-amber px-7 py-3.5" style="font-size:0.875rem;font-weight:500;letter-spacing:normal;text-transform:none" data-i18n="about.btn1">Смотреть линейку</a>
-        <a href="#cta" class="btn-ghost px-7 py-3.5" data-i18n-html="about.btn2">Консультация &ensp;↗</a>
+        <a href="#cta" class="btn-ghost px-7 py-3.5" data-i18n-html="about.btn2">Консультация<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
       </div>
     </div>
   </div>
@@ -438,7 +518,7 @@ body {
           </p>
           <div class="flex items-center gap-2 mt-6 transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
             <span class="text-label uppercase tracking-[0.08em] font-semibold" style="color:var(--lime)" data-i18n="common.more">Подробнее</span>
-            <span class="transition-transform duration-300 group-hover:translate-x-1" style="color:var(--lime)">→</span>
+            <svg class="btn-arrow transition-transform duration-300 group-hover:translate-x-1" style="color:var(--lime);margin-left:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
           </div>
         </div>
       </div>
@@ -455,7 +535,7 @@ body {
       </div>
 
       <!-- Economics card -->
-      <div class="md:col-span-3 rounded-2xl p-11 flex flex-col md:flex-row gap-12 items-center group cursor-pointer bento-lift" style="background:var(--bg-mid)">
+      <div class="md:col-span-3 rounded-2xl p-6 md:p-11 flex flex-col md:flex-row gap-8 md:gap-12 items-center group cursor-pointer bento-lift" style="background:var(--bg-mid)">
         <div class="md:w-1/2">
           <div class="text-label uppercase tracking-[0.1em] mb-6 transition-all duration-300 group-hover:tracking-[0.15em]" style="color:var(--muted)" data-i18n="results.econ_label">Экономика</div>
           <h3 class="text-title font-semibold mb-4" style="color:var(--text)" data-i18n="results.econ_title">Экономия — сразу</h3>
@@ -463,13 +543,13 @@ body {
             Снижение затрат на пестициды и удобрения до 30% при повышении качества продукции.
           </p>
         </div>
-        <div class="md:w-1/2 grid grid-cols-2 gap-4 w-full">
-          <div class="rounded-2xl p-7 transition-all duration-500 group-hover:scale-105" style="background:var(--bg-card)">
-            <div class="font-semibold leading-none tracking-tight mb-3 transition-all duration-500" style="font-size:40px;color:var(--lime)">−30%</div>
+        <div class="md:w-1/2 grid grid-cols-2 gap-3 md:gap-4 w-full min-w-0">
+          <div class="rounded-2xl p-5 md:p-7 min-w-0 transition-all duration-500 group-hover:scale-105" style="background:var(--bg-card)">
+            <div class="font-semibold leading-none tracking-tight mb-3 transition-all duration-500" style="font-size:clamp(28px,8vw,40px);color:var(--lime)">−30%</div>
             <div class="text-label uppercase tracking-[0.08em]" style="color:var(--muted)" data-i18n="results.econ_stat1">Химизация</div>
           </div>
-          <div class="rounded-2xl p-7 transition-all duration-500 group-hover:scale-105" style="background:var(--bg-card);transition-delay:0.1s">
-            <div class="font-semibold leading-none tracking-tight mb-3 transition-all duration-500" style="font-size:40px;color:var(--amber)">×2.5</div>
+          <div class="rounded-2xl p-5 md:p-7 min-w-0 transition-all duration-500 group-hover:scale-105" style="background:var(--bg-card);transition-delay:0.1s">
+            <div class="font-semibold leading-none tracking-tight mb-3 transition-all duration-500" style="font-size:clamp(28px,8vw,40px);color:var(--amber)">×2.5</div>
             <div class="text-label uppercase tracking-[0.08em]" style="color:var(--muted)" data-i18n="results.econ_stat2">ROI инвестиций</div>
           </div>
         </div>
@@ -493,8 +573,7 @@ body {
           <img src="/universal-product.png" alt="Universal" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="products.universal">Универсальные</h4>
-        <p class="text-body mb-7" style="color:var(--muted)" data-i18n="products.universal_desc">Базовый комплекс для старта вегетации и снятия гербицидного стресса.</p>
-        <span class="text-label uppercase tracking-[0.08em]" style="color:var(--lime)" data-i18n="common.more_arrow">Подробнее ↗</span>
+        <p class="text-body" style="color:var(--muted)" data-i18n="products.universal_desc">Базовый комплекс для старта вегетации и снятия гербицидного стресса.</p>
       </div>
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
@@ -502,8 +581,7 @@ body {
           <img src="/wheat-product.png" alt="Wheat" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="products.wheat">Пшеница</h4>
-        <p class="text-body mb-7" style="color:var(--muted)" data-i18n="products.wheat_desc">Специализированная формула для зерновых: кущение и колошение.</p>
-        <span class="text-label uppercase tracking-[0.08em]" style="color:var(--lime)" data-i18n="common.more_arrow">Подробнее ↗</span>
+        <p class="text-body" style="color:var(--muted)" data-i18n="products.wheat_desc">Специализированная формула для зерновых: кущение и колошение.</p>
       </div>
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
@@ -511,8 +589,7 @@ body {
           <img src="/corn-product.png" alt="Corn" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="products.corn">Кукуруза</h4>
-        <p class="text-body mb-7" style="color:var(--muted)" data-i18n="products.corn_desc">Усиленный состав для высокоурожайных культур: кукуруза, сорго.</p>
-        <span class="text-label uppercase tracking-[0.08em]" style="color:var(--lime)" data-i18n="common.more_arrow">Подробнее ↗</span>
+        <p class="text-body" style="color:var(--muted)" data-i18n="products.corn_desc">Усиленный состав для высокоурожайных культур: кукуруза, сорго.</p>
       </div>
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
@@ -520,8 +597,7 @@ body {
           <img src="/tech-product.png" alt="Technical" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="products.tech">Технические</h4>
-        <p class="text-body mb-7" style="color:var(--muted)" data-i18n="products.tech_desc">Составы для технических культур: подсолнечник, рапс, лён.</p>
-        <span class="text-label uppercase tracking-[0.08em]" style="color:var(--lime)" data-i18n="common.more_arrow">Подробнее ↗</span>
+        <p class="text-body" style="color:var(--muted)" data-i18n="products.tech_desc">Составы для технических культур: подсолнечник, рапс, лён.</p>
       </div>
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
@@ -529,8 +605,7 @@ body {
           <img src="/npk-product.png" alt="NPK+ Chelate" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="products.npk">NPK+ Хелат</h4>
-        <p class="text-body mb-7" style="color:var(--muted)" data-i18n="products.npk_desc">Комплекс NPK в хелатной форме. pH 3–11. Не забивает форсунки.</p>
-        <span class="text-label uppercase tracking-[0.08em]" style="color:var(--lime)" data-i18n="common.more_arrow">Подробнее ↗</span>
+        <p class="text-body" style="color:var(--muted)" data-i18n="products.npk_desc">Комплекс NPK в хелатной форме. pH 3–11. Не забивает форсунки.</p>
       </div>
     </div>
   </div>
@@ -551,8 +626,7 @@ body {
           <img src="/bioinsecticide.png" alt="Bioinsecticide" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="special.bioinsect">Биоинсектицид</h4>
-        <p class="text-body mb-7" style="color:var(--muted)" data-i18n="special.bioinsect_desc">Споро-кристаллический комплекс бактерий. Защита от вредителей без токсичных соединений.</p>
-        <span class="text-label uppercase tracking-[0.08em]" style="color:var(--lime)" data-i18n="common.more_arrow">Подробнее ↗</span>
+        <p class="text-body" style="color:var(--muted)" data-i18n="special.bioinsect_desc">Споро-кристаллический комплекс бактерий. Защита от вредителей без токсичных соединений.</p>
       </div>
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
@@ -560,8 +634,7 @@ body {
           <img src="/biofungicide.png" alt="Biofungicide" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="special.biofung">Биофунгицид</h4>
-        <p class="text-body mb-7" style="color:var(--muted)" data-i18n="special.biofung_desc">Биофунгицид для сельскохозяйственного производства по стандартам «органик».</p>
-        <span class="text-label uppercase tracking-[0.08em]" style="color:var(--lime)" data-i18n="common.more_arrow">Подробнее ↗</span>
+        <p class="text-body" style="color:var(--muted)" data-i18n="special.biofung_desc">Биофунгицид для сельскохозяйственного производства по стандартам «органик».</p>
       </div>
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
@@ -569,8 +642,7 @@ body {
           <img src="/zootechnik.png" alt="Zootechnik" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="special.zoo">Зоотехник</h4>
-        <p class="text-body mb-7" style="color:var(--muted)" data-i18n="special.zoo_desc">Натуральная органическая кормовая добавка для добавления в корм и питьё животных и птиц.</p>
-        <span class="text-label uppercase tracking-[0.08em]" style="color:var(--lime)" data-i18n="common.more_arrow">Подробнее ↗</span>
+        <p class="text-body" style="color:var(--muted)" data-i18n="special.zoo_desc">Натуральная органическая кормовая добавка для добавления в корм и питьё животных и птиц.</p>
       </div>
     </div>
   </div>
@@ -681,6 +753,7 @@ body {
       <button class="px-5 py-2 rounded-full text-label font-semibold uppercase tracking-[0.06em] ghost-border" style="color:var(--muted)" data-i18n="apply.tab4">Овощи / ягоды</button>
     </div>
 
+    <div class="apply-table-scroll">
     <div class="rounded-2xl overflow-hidden" style="background:var(--bg-card)">
       <div class="grid grid-cols-4 px-8 py-5" style="background:var(--bg-raise)">
         <span class="text-label uppercase tracking-[0.08em]" style="color:var(--muted)" data-i18n="apply.col1">Культура</span>
@@ -708,6 +781,7 @@ body {
           <span class="text-body" style="color:var(--muted)" data-i18n="apply.r3c4">Всхожесть, энергия прорастания</span>
         </div>
       </div>
+    </div>
     </div>
 
     <div class="mt-5 rounded-2xl px-8 py-6 flex gap-5 items-start" style="background:var(--bg-card)">
@@ -834,7 +908,7 @@ body {
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a href="mailto:info@cytochelat.com" class="btn-amber px-10 py-5 glow-amber" style="text-transform:none;font-size:1rem" data-i18n="cta.btn1">Запросить консультацию</a>
-          <a href="#" class="btn-ghost px-10 py-5" style="font-size:1rem" data-i18n-html="cta.btn2">Скачать прайс-лист &ensp;↗</a>
+          <a href="#" class="btn-ghost px-10 py-5" style="font-size:1rem" data-i18n-html="cta.btn2">Скачать прайс-лист<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </div>
       </div>
     </div>
@@ -923,7 +997,7 @@ const translations = {
     "hero.title": 'Живая почва.<br/>Здоровый урожай.<br/><span style="color:var(--lime)">Сильная экономика.</span>',
     "hero.subtitle": "Органоминеральный хелатор нового поколения: восстанавливает почву, сокращает минеральные удобрения<br/>и повышает урожайность.",
     "hero.cta1": "Узнать больше",
-    "hero.cta2": "Запросить консультацию &ensp;↗",
+    "hero.cta2": 'Запросить консультацию<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
 
     "about.quote": "\"Земля работает на урожай, а не истощается ради него.\"",
     "about.quote_author": "Ведущий исследователь",
@@ -935,7 +1009,7 @@ const translations = {
     "about.feat2": "Антистрессант — засуха, пестициды, перепады температур.",
     "about.feat3": "Транспортник — повышает доступность удобрений из почвы.",
     "about.btn1": "Смотреть линейку",
-    "about.btn2": "Консультация &ensp;↗",
+    "about.btn2": 'Консультация<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
 
     "results.label": "Результаты",
     "results.title": "Три принципа.<br/>Доказанный эффект.",
@@ -951,7 +1025,6 @@ const translations = {
     "results.econ_stat1": "Химизация",
     "results.econ_stat2": "ROI инвестиций",
     "common.more": "Подробнее",
-    "common.more_arrow": "Подробнее ↗",
 
     "products.title": "Составы по культурам",
     "products.universal": "Универсальные",
@@ -1042,7 +1115,7 @@ const translations = {
     "cta.title": "Почему хозяйства переходят на CYTOCHELATE?",
     "cta.desc": "Потому что результат — не на бумаге, а в бункере. Почва восстанавливается. Окупаемость — в первый сезон.",
     "cta.btn1": "Запросить консультацию",
-    "cta.btn2": "Скачать прайс-лист &ensp;↗",
+    "cta.btn2": 'Скачать прайс-лист<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
 
     "footer.desc": "Научный подход к питанию растений. Технологии в гармонии с природой. Новосибирск — 9 стран мира.",
     "footer.nav": "Навигация",
@@ -1069,7 +1142,7 @@ const translations = {
     "hero.title": 'Living soil.<br/>Healthy harvest.<br/><span style="color:var(--lime)">Strong economy.</span>',
     "hero.subtitle": "Next-generation organo-mineral chelator: restores soil, reduces mineral fertilizers and increases yield.",
     "hero.cta1": "Learn more",
-    "hero.cta2": "Request consultation &ensp;↗",
+    "hero.cta2": 'Request consultation<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
 
     "about.quote": "\"The land works for the harvest, not exhausted for its sake.\"",
     "about.quote_author": "Lead researcher",
@@ -1081,7 +1154,7 @@ const translations = {
     "about.feat2": "Anti-stress agent — drought, pesticides, temperature fluctuations.",
     "about.feat3": "Nutrient transporter — increases fertilizer availability from soil.",
     "about.btn1": "View lineup",
-    "about.btn2": "Consultation &ensp;↗",
+    "about.btn2": 'Consultation<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
 
     "results.label": "Results",
     "results.title": "Three principles.<br/>Proven effect.",
@@ -1097,7 +1170,6 @@ const translations = {
     "results.econ_stat1": "Chemicals",
     "results.econ_stat2": "Investment ROI",
     "common.more": "Learn more",
-    "common.more_arrow": "Learn more ↗",
 
     "products.title": "Formulations by crop",
     "products.universal": "Universal",
@@ -1188,7 +1260,7 @@ const translations = {
     "cta.title": "Why are farms switching to CYTOCHELATE?",
     "cta.desc": "Because results are not on paper, but in the grain bin. Soil restores itself. Payback — in the first season.",
     "cta.btn1": "Request consultation",
-    "cta.btn2": "Download price list &ensp;↗",
+    "cta.btn2": 'Download price list<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
 
     "footer.desc": "Scientific approach to plant nutrition. Technology in harmony with nature. Novosibirsk — 9 countries worldwide.",
     "footer.nav": "Navigation",
@@ -1215,7 +1287,7 @@ const translations = {
     "hero.title": 'Živo zemljište.<br/>Zdrav prinos.<br/><span style="color:var(--lime)">Snažna ekonomija.</span>',
     "hero.subtitle": "Organomineralni helator nove generacije: obnavlja zemljište, smanjuje mineralna đubriva i povećava prinos.",
     "hero.cta1": "Saznajte više",
-    "hero.cta2": "Zatražite konsultaciju &ensp;↗",
+    "hero.cta2": 'Zatražite konsultaciju<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
 
     "about.quote": "\"Zemlja radi za žetvu, a ne iscrpljuje se zarad nje.\"",
     "about.quote_author": "Vodeći istraživač",
@@ -1227,7 +1299,7 @@ const translations = {
     "about.feat2": "Antistresni agens — suša, pesticidi, temperaturne oscilacije.",
     "about.feat3": "Transporter hraniva — povećava dostupnost đubriva iz zemljišta.",
     "about.btn1": "Pogledajte liniju",
-    "about.btn2": "Konsultacija &ensp;↗",
+    "about.btn2": 'Konsultacija<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
 
     "results.label": "Rezultati",
     "results.title": "Tri principa.<br/>Dokazan efekat.",
@@ -1243,7 +1315,6 @@ const translations = {
     "results.econ_stat1": "Hemizacija",
     "results.econ_stat2": "ROI investicija",
     "common.more": "Detaljnije",
-    "common.more_arrow": "Detaljnije ↗",
 
     "products.title": "Formulacije po usevima",
     "products.universal": "Univerzalne",
@@ -1334,7 +1405,7 @@ const translations = {
     "cta.title": "Zašto gazdinstva prelaze na CYTOCHELATE?",
     "cta.desc": "Zato što rezultat nije na papiru, već u silosu. Zemljište se obnavlja. Povrat ulaganja — u prvoj sezoni.",
     "cta.btn1": "Zatražite konsultaciju",
-    "cta.btn2": "Preuzmite cenovnik &ensp;↗",
+    "cta.btn2": 'Preuzmite cenovnik<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
 
     "footer.desc": "Naučni pristup ishrani biljaka. Tehnologije u harmoniji sa prirodom. Novosibirsk — 9 zemalja sveta.",
     "footer.nav": "Navigacija",
@@ -1361,7 +1432,7 @@ const translations = {
     "hero.title": '活力土壤。<br/>健康丰收。<br/><span style="color:var(--lime)">强劲经济。</span>',
     "hero.subtitle": "新一代有机矿物螯合剂：修复土壤，减少化肥使用，提高作物产量。",
     "hero.cta1": "了解更多",
-    "hero.cta2": "申请咨询 &ensp;↗",
+    "hero.cta2": '申请咨询<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
 
     "about.quote": "\"让土地为丰收效力，而非因丰收而枯竭。\"",
     "about.quote_author": "首席研究员",
@@ -1373,7 +1444,7 @@ const translations = {
     "about.feat2": "抗逆剂 — 抵抗干旱、农药和温度波动。",
     "about.feat3": "养分运输剂 — 提高土壤肥料利用率。",
     "about.btn1": "查看产品线",
-    "about.btn2": "咨询 &ensp;↗",
+    "about.btn2": '咨询<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
 
     "results.label": "成效",
     "results.title": "三大原则。<br/>经验证的效果。",
@@ -1389,7 +1460,6 @@ const translations = {
     "results.econ_stat1": "化学投入",
     "results.econ_stat2": "投资回报率",
     "common.more": "详情",
-    "common.more_arrow": "详情 ↗",
 
     "products.title": "按作物分类配方",
     "products.universal": "通用型",
@@ -1480,7 +1550,7 @@ const translations = {
     "cta.title": "为什么农场纷纷转向 CYTOCHELATE？",
     "cta.desc": "因为成果不是在纸上，而是在粮仓里。土壤在自我修复。首季即可收回投资。",
     "cta.btn1": "申请咨询",
-    "cta.btn2": "下载价格表 &ensp;↗",
+    "cta.btn2": '下载价格表<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
 
     "footer.desc": "植物营养的科学方法。与自然和谐共生的技术。新西伯利亚 — 覆盖全球9个国家。",
     "footer.nav": "导航",
