@@ -360,6 +360,194 @@ h1.hero-title {
     white-space: nowrap;
   }
 }
+
+.gallery-thumb {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gallery-thumb:hover { transform: scale(1.02); }
+@media (prefers-reduced-motion: reduce) {
+  .gallery-thumb { transition: none; }
+  .gallery-thumb:hover { transform: none; }
+}
+.gallery-video-wrap {
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--ghost);
+}
+.gallery-video-wrap video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gallery-carousel-shell { position: relative; }
+.gallery-carousel-track {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 0;
+  border-radius: 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  outline: none;
+}
+.gallery-carousel-track::-webkit-scrollbar { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .gallery-carousel-track { scroll-behavior: auto; }
+}
+.gallery-carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+}
+.gallery-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--ghost);
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s, background 0.15s;
+}
+.gallery-carousel-arrow:hover { background: var(--bg-raise); }
+.gallery-carousel-arrow--prev { left: 0.5rem; }
+.gallery-carousel-arrow--next { right: 0.5rem; }
+.gallery-carousel-arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .gallery-carousel-arrow { width: 2.25rem; height: 2.25rem; }
+  .gallery-carousel-arrow--prev { left: 0.25rem; }
+  .gallery-carousel-arrow--next { right: 0.25rem; }
+}
+.gallery-carousel-dots button {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  border: none;
+  background: var(--ghost);
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.2s, background 0.2s;
+}
+.gallery-carousel-dots button[aria-current="true"] {
+  width: 1.5rem;
+  background: var(--lime);
+  border-radius: 0.25rem;
+}
+.gallery-carousel-shell--single .gallery-carousel-arrow,
+.gallery-carousel-shell--single .gallery-carousel-dots {
+  display: none;
+}
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1rem 1.25rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--ghost);
+  box-shadow: 0 -8px 32px rgba(26, 31, 22, 0.1);
+}
+.cookie-banner[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .cookie-banner { transition: none; }
+}
+
+.legal-doc h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.75rem;
+  color: var(--text);
+}
+.legal-doc h3:first-child { margin-top: 0; }
+.legal-doc p,
+.legal-doc li {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+.legal-doc ul { list-style: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
+.legal-doc ol { list-style: decimal; padding-left: 1.25rem; margin-bottom: 1rem; }
+.legal-doc a { color: var(--lime); text-decoration: underline; text-underline-offset: 2px; }
+.legal-placeholder {
+  border: 1px dashed var(--amber);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  background: rgba(250, 187, 102, 0.1);
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+@media (max-width: 768px) {
+  #cookieBanner:not([hidden]) ~ .fab-chat {
+    bottom: 7rem;
+  }
+}
+
+.footer-legal-details {
+  border: 1px solid var(--ghost);
+  border-radius: 1rem;
+  background: var(--bg-card);
+  overflow: hidden;
+}
+.footer-legal-details + .footer-legal-details {
+  margin-top: 0.5rem;
+}
+.footer-legal-summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+  user-select: none;
+}
+.footer-legal-summary::-webkit-details-marker { display: none; }
+.footer-legal-chevron {
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  color: var(--muted);
+  font-size: 1.35rem;
+}
+.footer-legal-details[open] .footer-legal-chevron {
+  transform: rotate(180deg);
+}
+.footer-legal-body {
+  border-top: 1px solid var(--ghost);
+  padding: 1rem 1.25rem 1.25rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-legal-chevron { transition: none; }
+}
 </style>
 </head>
 
@@ -377,6 +565,7 @@ h1.hero-title {
       <a href="#products" class="text-label font-medium uppercase c-muted" style="color:var(--muted);transition:color 0.15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="nav.products">Линейка</a>
       <a href="#science"  class="text-label font-medium uppercase" style="color:var(--muted);transition:color 0.15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="nav.science">Наука</a>
       <a href="#apply"    class="text-label font-medium uppercase" style="color:var(--muted);transition:color 0.15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="nav.apply">Применение</a>
+      <a href="#gallery"  class="text-label font-medium uppercase" style="color:var(--muted);transition:color 0.15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="nav.gallery">Галерея</a>
     </div>
 
     <div class="flex items-center gap-3">
@@ -876,6 +1065,148 @@ h1.hero-title {
 </section>
 
 
+<section id="gallery" class="py-32" style="background:var(--bg-mid)">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+    <div class="text-label uppercase tracking-[0.1em] mb-5" style="color:var(--lime)" data-i18n="gallery.label">Медиа</div>
+    <h2 class="text-headline font-semibold mb-4" style="color:var(--text)" data-i18n="gallery.title">Галерея</h2>
+    <p class="text-body-lg mb-14 max-w-2xl" style="color:var(--muted)" data-i18n="gallery.desc">Фото и видео с полей и производства.</p>
+
+    <h3 class="text-title font-semibold mb-6" style="color:var(--text)" data-i18n="gallery.photos">Фото</h3>
+    <div class="gallery-carousel-shell relative mb-16">
+      <button type="button" class="gallery-carousel-arrow gallery-carousel-arrow--prev" data-i18n-aria="gallery.aria_prev" aria-label="Предыдущий слайд">
+        <span class="material-symbols-outlined" style="font-size:28px">chevron_left</span>
+      </button>
+      <div id="gallery-photo-track" class="gallery-carousel-track" tabindex="0">
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.40.23.webp" alt="" class="w-full h-full object-cover" loading="eager" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.40.25.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.40.27.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.40.29.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.40.33.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.40.35%20(1).webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.40.38.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.40.40.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.40.42.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.40.45.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.40.59.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.41.02.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.41.08.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.41.14.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.41.20.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.41.25.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.41.29.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.41.31.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.41.34.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] gallery-thumb" style="background:var(--bg-card)">
+            <img src="/gallery/photo_2026-04-16%2023.41.36.webp" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1600" height="1200"/>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="gallery-carousel-arrow gallery-carousel-arrow--next" data-i18n-aria="gallery.aria_next" aria-label="Следующий слайд">
+        <span class="material-symbols-outlined" style="font-size:28px">chevron_right</span>
+      </button>
+      <div class="gallery-carousel-dots mt-5 flex justify-center gap-2" data-carousel-dots-for="gallery-photo-track" role="tablist"></div>
+    </div>
+
+    <h3 class="text-title font-semibold mb-6" style="color:var(--text)" data-i18n="gallery.videos">Видео</h3>
+    <div class="gallery-carousel-shell gallery-carousel-shell--single relative">
+      <button type="button" class="gallery-carousel-arrow gallery-carousel-arrow--prev" data-i18n-aria="gallery.aria_prev" aria-label="Предыдущий слайд">
+        <span class="material-symbols-outlined" style="font-size:28px">chevron_left</span>
+      </button>
+      <div id="gallery-video-track" class="gallery-carousel-track" tabindex="0">
+        <div class="gallery-carousel-slide px-1 sm:px-0">
+          <div class="gallery-video-wrap gallery-thumb">
+            <video controls playsinline preload="metadata" class="w-full aspect-video object-cover bg-black">
+              <source src="/gallery/IMG_3403%20(1).mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="gallery-carousel-arrow gallery-carousel-arrow--next" data-i18n-aria="gallery.aria_next" aria-label="Следующий слайд">
+        <span class="material-symbols-outlined" style="font-size:28px">chevron_right</span>
+      </button>
+      <div class="gallery-carousel-dots mt-5 flex justify-center gap-2" data-carousel-dots-for="gallery-video-track" role="tablist"></div>
+    </div>
+  </div>
+</section>
+
+
 <!-- CTA BANNER -->
 <section id="cta" class="py-16" style="background:var(--bg)">
   <div class="max-w-screen-xl mx-auto px-8">
@@ -917,9 +1248,9 @@ h1.hero-title {
 
 
 <!-- FOOTER -->
-<footer class="pt-20 pb-10" style="background:var(--bg-mid)">
-  <div class="max-w-screen-xl mx-auto px-8">
-    <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-20">
+<footer id="footer-legal" class="pt-20 pb-10" style="background:var(--bg-mid)">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-12 mb-12">
       <div>
         <div class="flex items-center gap-2.5 mb-6">
           <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background:var(--lime)">
@@ -946,6 +1277,7 @@ h1.hero-title {
           <li><a href="#products" class="text-body transition-colors" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="nav.products">Линейка</a></li>
           <li><a href="#science"  class="text-body transition-colors" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="nav.science">Наука</a></li>
           <li><a href="#apply"    class="text-body transition-colors" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="nav.apply">Применение</a></li>
+          <li><a href="#gallery"  class="text-body transition-colors" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="nav.gallery">Галерея</a></li>
         </ul>
       </div>
       <div>
@@ -956,23 +1288,134 @@ h1.hero-title {
           <li><a href="#" class="text-body" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer.dealers">Дилерам</a></li>
         </ul>
       </div>
-      <div>
-        <div class="text-label uppercase tracking-[0.1em] mb-6" style="color:var(--amber)" data-i18n="footer.legal">Юридически</div>
-        <ul class="space-y-3.5">
-          <li><a href="#" class="text-body" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer.privacy">Конфиденциальность</a></li>
-          <li><a href="#" class="text-body" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer.terms">Условия</a></li>
-        </ul>
-      </div>
     </div>
-    <div class="flex justify-between items-center" style="border-top:1px solid var(--bg-card);padding-top:2rem">
-      <span class="text-label uppercase tracking-[0.06em]" style="color:var(--subtle)">© 2024 CYTOCHELAT</span>
+
+    <div class="mb-16" lang="ru">
+      <div class="text-label uppercase tracking-[0.1em] mb-4" style="color:var(--amber)" data-i18n="footer.legal">Юридическая информация</div>
+      <p class="text-body mb-6 max-w-3xl" style="color:var(--muted)" data-i18n="footer.legal_intro">Документы в соответствии с законодательством РФ. Тексты юридических разделов на русском языке.</p>
+
+      <details id="legal-requisites" class="footer-legal-details">
+        <summary class="footer-legal-summary"><span data-i18n="footer.requisites">Реквизиты</span><span class="material-symbols-outlined footer-legal-chevron" aria-hidden="true">expand_more</span></summary>
+        <div class="footer-legal-body">
+          <h3 class="text-title font-semibold mb-4" style="color:var(--text)">Реквизиты и контакты оператора</h3>
+          <div class="legal-placeholder">
+            Укажите актуальные данные вашей организации (ООО / АО / ИП и т.д.): полное наименование, ОГРН / ОГРНИП, ИНН, КПП (при наличии), юридический адрес, почтовый адрес, адрес электронной почты и телефон для обращений субъектов персональных данных.
+          </div>
+          <dl class="text-body space-y-2 legal-doc" style="color:var(--muted)">
+            <dt class="font-medium" style="color:var(--text)">Полное наименование</dt><dd>ООО «_____» (заполнить)</dd>
+            <dt class="font-medium pt-2" style="color:var(--text)">ИНН / КПП</dt><dd>_____ / _____</dd>
+            <dt class="font-medium pt-2" style="color:var(--text)">ОГРН</dt><dd>_____</dd>
+            <dt class="font-medium pt-2" style="color:var(--text)">Юридический адрес</dt><dd>_____, Российская Федерация</dd>
+            <dt class="font-medium pt-2" style="color:var(--text)">E-mail</dt><dd><a href="mailto:info@cytochelat.com">info@cytochelat.com</a></dd>
+          </dl>
+        </div>
+      </details>
+
+      <details id="legal-privacy" class="footer-legal-details">
+        <summary class="footer-legal-summary"><span data-i18n="footer.privacy_pd">Политика ПДн</span><span class="material-symbols-outlined footer-legal-chevron" aria-hidden="true">expand_more</span></summary>
+        <div class="footer-legal-body legal-doc">
+          <p>Настоящая Политика разработана во исполнение требований Федерального закона от 27.07.2006 № 152‑ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению их безопасности на сайте в сети Интернет (далее — Сайт).</p>
+          <p><strong style="color:var(--text)">Оператор персональных данных:</strong> юридическое лицо / индивидуальный предприниматель, указанный в блоке «Реквизиты и контакты оператора».</p>
+          <h3>1. Основные понятия</h3>
+          <p>Используются термины, предусмотренные ст. 3 152‑ФЗ, в том числе: персональные данные, обработка персональных данных, оператор, распространение персональных данных, трансграничная передача и др.</p>
+          <h3>2. Цели обработки персональных данных</h3>
+          <ul>
+            <li>обработка обращений и запросов пользователей, направленных через контактные данные (в т.ч. при использовании ссылок электронной почты);</li>
+            <li>сопровождение договорных и преддоговорных отношений (при их наличии);</li>
+            <li>направление информации о продукции и услугах при наличии согласия или иного правового основания;</li>
+            <li>ведение статистики и улучшение работы Сайта (в обезличенном виде, где это применимо).</li>
+          </ul>
+          <h3>3. Правовые основания обработки</h3>
+          <p>Обработка осуществляется на основании ст. 6, 10, 18 152‑ФЗ, в том числе: с согласия субъекта персональных данных; для исполнения договора; для заключения договора по инициативе субъекта; при обработке персональных данных, разрешённых субъектом для распространения; иных оснований, предусмотренных 152‑ФЗ и применимыми подзаконными актами.</p>
+          <h3>4. Категории и состав персональных данных</h3>
+          <p>Могут обрабатываться, в зависимости от канала обращения: фамилия, имя, отчество; контактный номер телефона; адрес электронной почты; наименование организации; иные сведения, сообщённые пользователем добровольно в обращении.</p>
+          <h3>5. Порядок и условия обработки. Сроки хранения</h3>
+          <p>Обработка осуществляется с использованием средств автоматизации и без использования таких средств. Хранение — не дольше, чем этого требуют цели обработки, если иной срок не предусмотрен законом или договором. По достижении целей обработки персональные данные подлежат уничтожению либо обезличиванию.</p>
+          <h3>6. Передача третьим лицам</h3>
+          <p>Оператор не раскрывает персональные данные третьим лицам, за исключением случаев, предусмотренных законодательством РФ, либо при наличии отдельного согласия субъекта. Могут привлекаться подрядчики (хостинг, ИТ‑сервисы) по договорам с обязанностью соблюдения конфиденциальности и требований безопасности.</p>
+          <h3>7. Трансграничная передача</h3>
+          <p>При необходимости трансграничной передачи персональных данных Оператор соблюдает требования ст. 12 152‑ФЗ.</p>
+          <h3>8. Меры по защите персональных данных</h3>
+          <p>Оператор принимает правовые, организационные и технические меры, необходимые для защиты персональных данных от неправомерного или случайного доступа, уничтожения, изменения, блокирования, копирования, распространения и иных неправомерных действий.</p>
+          <h3>9. Права субъекта персональных данных</h3>
+          <p>Субъект имеет право на получение информации об обработке его персональных данных, на уточнение, блокирование или уничтожение при нарушении закона, на отзыв согласия (если обработка основана на согласии), на обжалование действий или бездействия Оператора в уполномоченный орган по защите прав субъектов персональных данных (Роскомнадзор) и в судебном порядке — в соответствии со ст. 14, 15, 21 152‑ФЗ.</p>
+          <p>Обращения направляются на адрес электронной почты, указанный в реквизитах; срок ответа — в пределах, установленных законом. Жалоба на действия или бездействие оператора может быть направлена в уполномоченный орган по защите прав субъектов персональных данных (<a href="https://rkn.gov.ru" target="_blank" rel="noopener noreferrer">Роскомнадзор</a>).</p>
+          <h3>10. Обработка обезличенных данных (cookies и аналоги)</h3>
+          <p>Сведения об использовании cookie‑файлов и аналогичных технологий приведены в документе «Политика в отношении файлов cookie» в разделе Cookie ниже.</p>
+          <h3>11. Изменение Политики</h3>
+          <p>Оператор вправе вносить изменения в настоящую Политику; новая редакция вступает в силу с момента её размещения на Сайте, если иное не предусмотрено новой редакцией.</p>
+          <p class="text-label uppercase tracking-[0.06em] mt-8" style="color:var(--subtle)">Дата публикации: 16.04.2026</p>
+        </div>
+      </details>
+
+      <details id="legal-cookies" class="footer-legal-details">
+        <summary class="footer-legal-summary"><span data-i18n="footer.cookies_policy">Cookie</span><span class="material-symbols-outlined footer-legal-chevron" aria-hidden="true">expand_more</span></summary>
+        <div class="footer-legal-body legal-doc">
+          <p class="text-title font-semibold mb-4" style="color:var(--text)">Политика в отношении файлов cookie и локальных данных</p>
+          <p>Сайт может использовать файлы cookie и аналогичные технологии (локальное хранилище браузера).</p>
+          <h3>1. Какие данные хранятся на устройстве пользователя</h3>
+          <ul>
+            <li>выбор языка интерфейса (ключ в локальном хранилище браузера);</li>
+            <li>сведение о согласии на использование cookie и аналогичных технологий (локальное хранилище);</li>
+            <li>технические cookie, необходимые для работы отдельных функций Сайта (если применяются).</li>
+          </ul>
+          <h3>2. Сторонние ресурсы</h3>
+          <p>Сайт может подключать шрифты и иные ресурсы с серверов третьих лиц (например, сервисы Google Fonts, CDN). Такие поставщики могут получать техническую информацию (в т.ч. IP‑адрес, сведения о запросе) в соответствии со своими политиками конфиденциальности. Рекомендуем ознакомиться с их документами на официальных сайтах.</p>
+          <h3>3. Управление cookie</h3>
+          <p>Пользователь может удалить или заблокировать cookie в настройках браузера. Отключение cookie может повлиять на работу отдельных функций Сайта.</p>
+        </div>
+      </details>
+
+      <details id="legal-terms" class="footer-legal-details">
+        <summary class="footer-legal-summary"><span data-i18n="footer.user_agreement">Пользовательское соглашение</span><span class="material-symbols-outlined footer-legal-chevron" aria-hidden="true">expand_more</span></summary>
+        <div class="footer-legal-body legal-doc">
+          <h3>1. Общие положения</h3>
+          <p>Настоящее Пользовательское соглашение регулирует отношения между владельцем Сайта и пользователем при использовании материалов и сервисов Сайта. Используя Сайт, пользователь подтверждает, что ознакомился с настоящим Соглашением и Политикой в отношении обработки персональных данных.</p>
+          <h3>2. Публичная оферта и информационный характер материалов</h3>
+          <p>Материалы Сайта носят информационный характер и не являются публичной офертой в значении ст. 437 Гражданского кодекса Российской Федерации. Условия поставки продукции, цены и иные существенные условия определяются в отдельной документации и/или договорах с контрагентами.</p>
+          <h3>3. Интеллектуальная собственность</h3>
+          <p>Элементы дизайна, тексты, изображения, логотипы и иные объекты, размещённые на Сайте, охраняются законодательством об интеллектуальной собственности. Воспроизведение и распространение без согласия правообладателя не допускаются, за исключением случаев, прямо предусмотренных законом.</p>
+          <h3>4. Ограничение ответственности</h3>
+          <p>Сайт и материалы на нём предоставляются «как есть». Владелец Сайта не несёт ответственности за убытки, возникшие в связи с использованием или невозможностью использования Сайта, за действия третьих лиц и за содержание внешних ресурсов, на которые могут вести ссылки.</p>
+          <h3>5. Информационная и рекламная деятельность</h3>
+          <p>При размещении на Сайте материалов, отвечающих признакам рекламы по законодательству Российской Федерации (в том числе Федеральный закон от 13.03.2006 № 38‑ФЗ «О рекламе»), сведения об рекламодателе приводятся в реквизитах или в тексте материала в соответствии с требованиями закона.</p>
+          <h3>6. Применимое право и споры</h3>
+          <p>К отношениям применяется право Российской Федерации. Споры подлежат урегулированию в порядке, установленном законодательством РФ.</p>
+          <h3>7. Изменение Соглашения</h3>
+          <p>Владелец Сайта вправе изменять настоящее Соглашение; актуальная редакция размещается на Сайте.</p>
+          <p class="text-label uppercase tracking-[0.06em] mt-8" style="color:var(--subtle)">Дата публикации: 16.04.2026</p>
+        </div>
+      </details>
+
+      <details id="legal-consumers" class="footer-legal-details">
+        <summary class="footer-legal-summary"><span data-i18n="footer.consumers">Защита прав потребителей</span><span class="material-symbols-outlined footer-legal-chevron" aria-hidden="true">expand_more</span></summary>
+        <div class="footer-legal-body legal-doc">
+          <p>Права потребителей при покупке товаров для личных нужд защищаются законодательством о защите прав потребителей. Обращения направляются в уполномоченный орган по защите прав потребителей по месту жительства и по контактам региональных служб (в том числе <a href="https://rospotrebnadzor.gov.ru" target="_blank" rel="noopener noreferrer">Роспотребнадзор</a>).</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4" style="border-top:1px solid var(--bg-card);padding-top:2rem">
+      <span class="text-label uppercase tracking-[0.06em]" style="color:var(--subtle)">© 2026 CYTOCHELAT</span>
       <span class="text-label uppercase tracking-[0.06em]" style="color:var(--subtle)">Precision Ecology</span>
     </div>
   </div>
 </footer>
 
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Файлы cookie">
+  <div class="max-w-screen-xl mx-auto flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <p class="text-body flex-1 pr-4 m-0" style="color:var(--muted)" data-i18n="cookie.banner">
+      Мы используем cookie и локальное хранилище для языка и работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с политикой обработки данных и файлов cookie.
+    </p>
+    <div class="flex flex-wrap gap-3 shrink-0 items-center">
+      <a href="#legal-cookies" class="text-label font-medium uppercase c-muted hover:c-text" style="letter-spacing:0.06em" data-i18n="cookie.detail">Подробнее</a>
+      <button type="button" id="cookieAccept" class="btn-amber px-6 py-2.5" style="text-transform:none;font-size:0.875rem;font-weight:600" data-i18n="cookie.accept">Принять</button>
+    </div>
+  </div>
+</div>
+
 <!-- FAB -->
-<div class="fixed bottom-8 right-8 z-50">
+<div class="fab-chat fixed bottom-8 right-8 z-50">
   <a href="#cta" class="btn-amber w-14 h-14 rounded-full flex items-center justify-center glow-amber hover:scale-110 transition-transform">
     <span class="material-symbols-outlined text-2xl">chat_bubble</span>
   </a>
@@ -988,7 +1431,17 @@ const translations = {
     "nav.products": "Линейка",
     "nav.science": "Наука",
     "nav.apply": "Применение",
+    "nav.gallery": "Галерея",
     "nav.contact": "Связаться",
+
+    "gallery.label": "Медиа",
+    "gallery.title": "Галерея",
+    "gallery.desc": "Фото и видео с полей и производства.",
+    "gallery.photos": "Фото",
+    "gallery.videos": "Видео",
+    "gallery.aria_prev": "Предыдущий слайд",
+    "gallery.aria_next": "Следующий слайд",
+    "gallery.aria_goto_slide": "Перейти к слайду",
 
     "hero.chip1": "Bio-технология",
     "hero.chip2": "NANO-5 хелаты",
@@ -1123,9 +1576,17 @@ const translations = {
     "footer.about_us": "О нас",
     "footer.contacts": "Контакты",
     "footer.dealers": "Дилерам",
-    "footer.legal": "Юридически",
-    "footer.privacy": "Конфиденциальность",
-    "footer.terms": "Условия",
+    "footer.legal": "Юридическая информация",
+    "footer.requisites": "Реквизиты",
+    "footer.privacy_pd": "Политика ПДн",
+    "footer.cookies_policy": "Cookie",
+    "footer.user_agreement": "Пользовательское соглашение",
+    "footer.consumers": "Защита прав потребителей",
+    "footer.legal_intro": "Документы в соответствии с законодательством РФ. Тексты юридических разделов на русском языке.",
+
+    "cookie.banner": "Мы используем cookie и локальное хранилище для языка и работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с политикой обработки данных и файлов cookie.",
+    "cookie.detail": "Подробнее",
+    "cookie.accept": "Принять",
   },
 
   en: {
@@ -1133,7 +1594,17 @@ const translations = {
     "nav.products": "Lineup",
     "nav.science": "Science",
     "nav.apply": "Application",
+    "nav.gallery": "Gallery",
     "nav.contact": "Contact",
+
+    "gallery.label": "Media",
+    "gallery.title": "Gallery",
+    "gallery.desc": "Photos and videos from the field and production.",
+    "gallery.photos": "Photos",
+    "gallery.videos": "Videos",
+    "gallery.aria_prev": "Previous slide",
+    "gallery.aria_next": "Next slide",
+    "gallery.aria_goto_slide": "Go to slide",
 
     "hero.chip1": "Bio-technology",
     "hero.chip2": "NANO-5 chelates",
@@ -1268,9 +1739,17 @@ const translations = {
     "footer.about_us": "About us",
     "footer.contacts": "Contacts",
     "footer.dealers": "For dealers",
-    "footer.legal": "Legal",
-    "footer.privacy": "Privacy",
-    "footer.terms": "Terms",
+    "footer.legal": "Legal information",
+    "footer.requisites": "Legal information",
+    "footer.privacy_pd": "Personal data policy",
+    "footer.cookies_policy": "Cookies",
+    "footer.user_agreement": "User agreement",
+    "footer.consumers": "Consumer protection",
+    "footer.legal_intro": "Documents under Russian law. Legal sections are provided in Russian.",
+
+    "cookie.banner": "We use cookies and local storage for language and site operation. By continuing, you agree to our privacy and cookie policy.",
+    "cookie.detail": "Details",
+    "cookie.accept": "Accept",
   },
 
   sr: {
@@ -1278,7 +1757,17 @@ const translations = {
     "nav.products": "Linija",
     "nav.science": "Nauka",
     "nav.apply": "Primena",
+    "nav.gallery": "Galerija",
     "nav.contact": "Kontakt",
+
+    "gallery.label": "Mediji",
+    "gallery.title": "Galerija",
+    "gallery.desc": "Fotografije i video sa polja i proizvodnje.",
+    "gallery.photos": "Fotografije",
+    "gallery.videos": "Video",
+    "gallery.aria_prev": "Prethodni slajd",
+    "gallery.aria_next": "Sledeći slajd",
+    "gallery.aria_goto_slide": "Idi na slajd",
 
     "hero.chip1": "Bio-tehnologija",
     "hero.chip2": "NANO-5 helati",
@@ -1413,9 +1902,17 @@ const translations = {
     "footer.about_us": "O nama",
     "footer.contacts": "Kontakti",
     "footer.dealers": "Za dilere",
-    "footer.legal": "Pravno",
-    "footer.privacy": "Privatnost",
-    "footer.terms": "Uslovi",
+    "footer.legal": "Pravne informacije",
+    "footer.requisites": "Podaci o subjektu",
+    "footer.privacy_pd": "Politika ličnih podataka",
+    "footer.cookies_policy": "Kolačići",
+    "footer.user_agreement": "Korisnički ugovor",
+    "footer.consumers": "Zaštita potrošača",
+    "footer.legal_intro": "Dokumenta u skladu sa zakonima RF. Pravni tekstovi na ruskom.",
+
+    "cookie.banner": "Koristimo kolačiće i lokalno skladište za jezik i rad sajta. Nastavkom prihvatate politiku obrade podataka i kolačića.",
+    "cookie.detail": "Detaljnije",
+    "cookie.accept": "Prihvatam",
   },
 
   zh: {
@@ -1423,7 +1920,17 @@ const translations = {
     "nav.products": "产品线",
     "nav.science": "科学",
     "nav.apply": "应用",
+    "nav.gallery": "图库",
     "nav.contact": "联系我们",
+
+    "gallery.label": "媒体",
+    "gallery.title": "图库",
+    "gallery.desc": "田间与生产现场的照片和视频。",
+    "gallery.photos": "照片",
+    "gallery.videos": "视频",
+    "gallery.aria_prev": "上一张",
+    "gallery.aria_next": "下一张",
+    "gallery.aria_goto_slide": "转到幻灯片",
 
     "hero.chip1": "生物技术",
     "hero.chip2": "NANO-5 螯合物",
@@ -1559,8 +2066,16 @@ const translations = {
     "footer.contacts": "联系方式",
     "footer.dealers": "经销商",
     "footer.legal": "法律信息",
-    "footer.privacy": "隐私政策",
-    "footer.terms": "条款",
+    "footer.requisites": "注册信息",
+    "footer.privacy_pd": "个人信息政策",
+    "footer.cookies_policy": "Cookie",
+    "footer.user_agreement": "用户协议",
+    "footer.consumers": "消费者权益保护",
+    "footer.legal_intro": "根据俄罗斯联邦法律提供的文件。法律文本以俄语为准。",
+
+    "cookie.banner": "我们使用 cookie 和本地存储以保存语言和运行网站。继续使用即表示您同意数据处理与 Cookie 政策。",
+    "cookie.detail": "详情",
+    "cookie.accept": "接受",
   }
 };
 
@@ -1592,6 +2107,21 @@ function switchLang(lang) {
     }
   });
 
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const key = el.getAttribute('data-i18n-aria');
+    if (t[key] !== undefined) {
+      el.setAttribute('aria-label', t[key]);
+    }
+  });
+
+  document.querySelectorAll('[data-carousel-dots-for]').forEach(container => {
+    const gotoSlide = t['gallery.aria_goto_slide'];
+    if (!gotoSlide) return;
+    container.querySelectorAll('button').forEach((btn, i) => {
+      btn.setAttribute('aria-label', `${gotoSlide} ${i + 1}`);
+    });
+  });
+
   // Update lang label
   document.getElementById('currentLangLabel').textContent = langLabels[lang];
 
@@ -1617,9 +2147,144 @@ document.addEventListener('click', (e) => {
 });
 
 // Apply saved language on load
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function openFooterLegalFromHash() {
+  const id = window.location.hash.replace(/^#/, '');
+  if (!id || !id.startsWith('legal-')) return;
+  const el = document.getElementById(id);
+  if (!el || el.tagName !== 'DETAILS') return;
+  el.open = true;
+  requestAnimationFrame(() => {
+    el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'nearest' });
+  });
+}
+
+window.addEventListener('hashchange', openFooterLegalFromHash);
+
+function initGalleryCarousel(trackId) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
+  const shell = track.closest('.gallery-carousel-shell');
+  if (!shell) return;
+  const prev = shell.querySelector('.gallery-carousel-arrow--prev');
+  const next = shell.querySelector('.gallery-carousel-arrow--next');
+  const dotsContainer = shell.querySelector('[data-carousel-dots-for="' + trackId + '"]');
+  const slideNodes = () => Array.from(track.querySelectorAll('.gallery-carousel-slide'));
+
+  function currentIndex() {
+    const slides = slideNodes();
+    if (!slides.length) return 0;
+    const mid = track.scrollLeft + track.clientWidth / 2;
+    let best = 0;
+    let bestDist = Infinity;
+    slides.forEach((el, i) => {
+      const c = el.offsetLeft + el.offsetWidth / 2;
+      const d = Math.abs(c - mid);
+      if (d < bestDist) {
+        bestDist = d;
+        best = i;
+      }
+    });
+    return best;
+  }
+
+  function go(delta) {
+    const slides = slideNodes();
+    if (!slides.length) return;
+    const ci = currentIndex();
+    const target = Math.max(0, Math.min(slides.length - 1, ci + delta));
+    track.scrollTo({
+      left: slides[target].offsetLeft,
+      behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+    });
+  }
+
+  function updateArrowsAndDots() {
+    const slides = slideNodes();
+    const max = Math.max(0, slides.length - 1);
+    const idx = Math.min(max, Math.max(0, currentIndex()));
+    if (prev) prev.disabled = idx <= 0;
+    if (next) next.disabled = idx >= max;
+    if (dotsContainer) {
+      dotsContainer.querySelectorAll('button').forEach((btn, i) => {
+        btn.setAttribute('aria-current', i === idx ? 'true' : 'false');
+      });
+    }
+    if (trackId === 'gallery-video-track') {
+      track.querySelectorAll('video').forEach((v, i) => {
+        if (i !== idx) v.pause();
+      });
+    }
+  }
+
+  if (prev) prev.addEventListener('click', () => go(-1));
+  if (next) next.addEventListener('click', () => go(1));
+
+  let scrollTimer;
+  track.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(updateArrowsAndDots, 60);
+  });
+
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      go(-1);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      go(1);
+    }
+  });
+
+  window.addEventListener('resize', updateArrowsAndDots);
+
+  if (dotsContainer) {
+    const tr = translations[currentLang] || translations.ru;
+    const prefix = tr['gallery.aria_goto_slide'] || 'Slide';
+    dotsContainer.innerHTML = '';
+    slideNodes().forEach((slideEl, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', `${prefix} ${i + 1}`);
+      b.addEventListener('click', () => {
+        track.scrollTo({
+          left: slideEl.offsetLeft,
+          behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+        });
+      });
+      dotsContainer.appendChild(b);
+    });
+  }
+
+  updateArrowsAndDots();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   if (currentLang !== 'ru') {
     switchLang(currentLang);
+  }
+
+  initGalleryCarousel('gallery-photo-track');
+  initGalleryCarousel('gallery-video-track');
+
+  const cookieKey = 'cytochelat-cookie-consent';
+  const cookieBanner = document.getElementById('cookieBanner');
+  const cookieBtn = document.getElementById('cookieAccept');
+  try {
+    if (localStorage.getItem(cookieKey) === '1' && cookieBanner) {
+      cookieBanner.hidden = true;
+    }
+  } catch (e) {}
+  if (cookieBtn && cookieBanner) {
+    cookieBtn.addEventListener('click', () => {
+      try {
+        localStorage.setItem(cookieKey, '1');
+      } catch (e2) {}
+      cookieBanner.hidden = true;
+    });
   }
 
   // Bar animations
@@ -1636,6 +2301,8 @@ document.addEventListener('DOMContentLoaded', () => {
     el.style.width = '0';
     barObserver.observe(el);
   });
+
+  openFooterLegalFromHash();
 });
 
 // Tabs
