@@ -463,51 +463,6 @@ h1.hero-title {
   scroll-margin-top: var(--gallery-nav-gap);
 }
 
-@media (min-width: 1024px) {
-  #gallery.gallery-balanced {
-    max-height: calc(100svh - var(--gallery-nav-gap));
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-
-  #gallery.gallery-balanced .gallery-photo-frame {
-    position: relative;
-    width: 100%;
-    aspect-ratio: auto;
-    height: min(46vh, 30rem);
-    max-height: min(46vh, 30rem);
-    overflow: hidden;
-  }
-
-  #gallery.gallery-balanced .gallery-photo-frame img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  #gallery.gallery-balanced .gallery-video-wrap {
-    position: relative;
-    width: 100%;
-    height: min(28vh, 18rem);
-    max-height: min(28vh, 18rem);
-    overflow: hidden;
-  }
-
-  #gallery.gallery-balanced .gallery-video-wrap .gallery-video-el {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    aspect-ratio: unset;
-    display: block;
-  }
-}
-
 .cookie-banner {
   position: fixed;
   bottom: 0;
@@ -1115,16 +1070,14 @@ h1.hero-title {
 </section>
 
 
-<section id="gallery" class="py-32 lg:py-8 gallery-balanced" style="background:var(--bg-mid)">
-  <div class="max-w-screen-xl mx-auto px-8 w-full">
-    <div class="gallery-intro">
-    <div class="text-label uppercase tracking-[0.1em] mb-5 lg:mb-2" style="color:var(--lime)" data-i18n="gallery.label">Медиа</div>
-    <h2 class="text-headline font-semibold mb-4 lg:mb-2 leading-tight" style="color:var(--text)" data-i18n="gallery.title">Галерея</h2>
-    <p class="text-body-lg mb-14 lg:mb-3 max-w-2xl" style="color:var(--muted)" data-i18n="gallery.desc">Фото и видео с полей и производства.</p>
-    </div>
+<section id="gallery" class="py-32" style="background:var(--bg-mid)">
+  <div class="max-w-screen-xl mx-auto px-8">
+    <div class="text-label uppercase tracking-[0.1em] mb-5" style="color:var(--lime)" data-i18n="gallery.label">Медиа</div>
+    <h2 class="text-headline font-semibold mb-12" style="color:var(--text)" data-i18n="gallery.title">Галерея</h2>
+    <p class="text-body-lg mb-14 max-w-2xl" style="color:var(--muted)" data-i18n="gallery.desc">Фото и видео с полей и производства.</p>
 
-    <h3 class="text-title font-semibold mb-6 lg:mb-1 shrink-0" style="color:var(--text)" data-i18n="gallery.photos">Фото</h3>
-    <div class="gallery-carousel-shell relative mb-16 lg:mb-2 gallery-photo-shell">
+    <h3 class="text-title font-semibold mb-6" style="color:var(--text)" data-i18n="gallery.photos">Фото</h3>
+    <div class="gallery-carousel-shell relative mb-16">
       <button type="button" class="gallery-carousel-arrow gallery-carousel-arrow--prev" data-i18n-aria="gallery.aria_prev" aria-label="Предыдущий слайд">
         <span class="material-symbols-outlined" style="font-size:28px">chevron_left</span>
       </button>
@@ -1233,18 +1186,18 @@ h1.hero-title {
       <button type="button" class="gallery-carousel-arrow gallery-carousel-arrow--next" data-i18n-aria="gallery.aria_next" aria-label="Следующий слайд">
         <span class="material-symbols-outlined" style="font-size:28px">chevron_right</span>
       </button>
-      <div class="gallery-carousel-dots mt-5 lg:mt-2 flex justify-center gap-2" data-carousel-dots-for="gallery-photo-track" role="tablist"></div>
+      <div class="gallery-carousel-dots mt-5 flex justify-center gap-2" data-carousel-dots-for="gallery-photo-track" role="tablist"></div>
     </div>
 
-    <h3 class="text-title font-semibold mb-6 lg:mb-1 shrink-0" style="color:var(--text)" data-i18n="gallery.videos">Видео</h3>
-    <div class="gallery-carousel-shell gallery-carousel-shell--single relative gallery-video-shell">
+    <h3 class="text-title font-semibold mb-6" style="color:var(--text)" data-i18n="gallery.videos">Видео</h3>
+    <div class="gallery-carousel-shell gallery-carousel-shell--single relative">
       <button type="button" class="gallery-carousel-arrow gallery-carousel-arrow--prev" data-i18n-aria="gallery.aria_prev" aria-label="Предыдущий слайд">
         <span class="material-symbols-outlined" style="font-size:28px">chevron_left</span>
       </button>
       <div id="gallery-video-track" class="gallery-carousel-track" tabindex="0">
         <div class="gallery-carousel-slide px-1 sm:px-0">
           <div class="gallery-video-wrap gallery-thumb">
-            <video controls playsinline preload="metadata" class="gallery-video-el w-full aspect-video object-cover bg-black">
+            <video controls playsinline preload="metadata" class="w-full aspect-video object-cover bg-black">
               <source src="/gallery/IMG_3403%20(1).mp4" type="video/mp4"/>
             </video>
           </div>
@@ -1253,7 +1206,7 @@ h1.hero-title {
       <button type="button" class="gallery-carousel-arrow gallery-carousel-arrow--next" data-i18n-aria="gallery.aria_next" aria-label="Следующий слайд">
         <span class="material-symbols-outlined" style="font-size:28px">chevron_right</span>
       </button>
-      <div class="gallery-carousel-dots mt-5 lg:mt-2 flex justify-center gap-2" data-carousel-dots-for="gallery-video-track" role="tablist"></div>
+      <div class="gallery-carousel-dots mt-5 flex justify-center gap-2" data-carousel-dots-for="gallery-video-track" role="tablist"></div>
     </div>
   </div>
 </section>
