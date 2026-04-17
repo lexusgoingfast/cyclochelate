@@ -534,15 +534,23 @@ h1.hero-title {
   }
 
   #gallery.gallery-vh .gallery-video-wrap {
-    max-height: clamp(7rem, 22svh, 13rem);
+    width: 100%;
+    max-width: 100%;
+    height: min(28svh, 18rem);
+    min-height: 8rem;
+    position: relative;
+    overflow: hidden;
   }
 
-  #gallery.gallery-vh .gallery-video-wrap video {
-    max-height: clamp(7rem, 22svh, 13rem);
-    aspect-ratio: 16 / 9;
+  #gallery.gallery-vh .gallery-video-wrap .gallery-video-el {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
+    max-width: none;
+    aspect-ratio: unset;
     object-fit: cover;
+    display: block;
   }
 
   #gallery.gallery-vh .gallery-carousel-dots {
@@ -1287,7 +1295,7 @@ h1.hero-title {
       <div id="gallery-video-track" class="gallery-carousel-track" tabindex="0">
         <div class="gallery-carousel-slide px-1 sm:px-0">
           <div class="gallery-video-wrap gallery-thumb">
-            <video controls playsinline preload="metadata" class="w-full aspect-video object-cover bg-black">
+            <video controls playsinline preload="metadata" class="gallery-video-el w-full aspect-video object-cover bg-black">
               <source src="/gallery/IMG_3403%20(1).mp4" type="video/mp4"/>
             </video>
           </div>
