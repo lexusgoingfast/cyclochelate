@@ -464,98 +464,47 @@ h1.hero-title {
 }
 
 @media (min-width: 1024px) {
-  #gallery.gallery-vh {
-    box-sizing: border-box;
-    height: calc(100svh - var(--gallery-nav-gap));
+  #gallery.gallery-balanced {
     max-height: calc(100svh - var(--gallery-nav-gap));
-    min-height: calc(100svh - var(--gallery-nav-gap));
-    padding-top: 0.625rem;
-    padding-bottom: 0.625rem;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
-  #gallery.gallery-vh .gallery-vh-inner {
-    flex: 1;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  #gallery.gallery-vh .gallery-intro {
-    flex-shrink: 0;
-  }
-
-  #gallery.gallery-vh .gallery-photo-shell {
-    flex: 1 1 0;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  #gallery.gallery-vh #gallery-photo-track {
-    flex: 1;
-    min-height: 0;
-  }
-
-  #gallery.gallery-vh .gallery-carousel-slide {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-  }
-
-  #gallery.gallery-vh .gallery-photo-frame {
+  #gallery.gallery-balanced .gallery-photo-frame {
     position: relative;
-    flex: 1 1 auto;
-    min-height: 0;
     width: 100%;
-    max-width: 100%;
     aspect-ratio: auto;
-    max-height: 100%;
-  }
-
-  #gallery.gallery-vh .gallery-photo-frame img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  #gallery.gallery-vh .gallery-video-shell {
-    flex-shrink: 0;
-  }
-
-  #gallery.gallery-vh #gallery-video-track {
-    min-height: 0;
-  }
-
-  #gallery.gallery-vh .gallery-video-wrap {
-    width: 100%;
-    max-width: 100%;
-    height: min(28svh, 18rem);
-    min-height: 8rem;
-    position: relative;
+    height: min(46vh, 30rem);
+    max-height: min(46vh, 30rem);
     overflow: hidden;
   }
 
-  #gallery.gallery-vh .gallery-video-wrap .gallery-video-el {
+  #gallery.gallery-balanced .gallery-photo-frame img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    max-width: none;
-    aspect-ratio: unset;
     object-fit: cover;
-    display: block;
   }
 
-  #gallery.gallery-vh .gallery-carousel-dots {
-    margin-top: 0.35rem;
-    flex-shrink: 0;
+  #gallery.gallery-balanced .gallery-video-wrap {
+    position: relative;
+    width: 100%;
+    height: min(28vh, 18rem);
+    max-height: min(28vh, 18rem);
+    overflow: hidden;
+  }
+
+  #gallery.gallery-balanced .gallery-video-wrap .gallery-video-el {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: unset;
+    display: block;
   }
 }
 
@@ -1166,8 +1115,8 @@ h1.hero-title {
 </section>
 
 
-<section id="gallery" class="py-32 lg:py-0 gallery-vh" style="background:var(--bg-mid)">
-  <div class="max-w-screen-xl mx-auto px-8 w-full gallery-vh-inner">
+<section id="gallery" class="py-32 lg:py-8 gallery-balanced" style="background:var(--bg-mid)">
+  <div class="max-w-screen-xl mx-auto px-8 w-full">
     <div class="gallery-intro">
     <div class="text-label uppercase tracking-[0.1em] mb-5 lg:mb-2" style="color:var(--lime)" data-i18n="gallery.label">Медиа</div>
     <h2 class="text-headline font-semibold mb-4 lg:mb-2 leading-tight" style="color:var(--text)" data-i18n="gallery.title">Галерея</h2>
