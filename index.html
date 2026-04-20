@@ -16,6 +16,7 @@
 <meta name="twitter:title" content="CYTOCHELAT — Precision Ecology"/>
 <meta name="twitter:description" content="Биотехнологии питания растений: NANO-5 хелаты, восстановление почвы и рост урожайности."/>
 <meta name="twitter:image" content="/photo_2026-04-16%2023.39.40.jpeg"/>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -1281,10 +1282,10 @@ h1.hero-title {
               <input type="checkbox" name="pdn_consent" required class="mt-1"/>
               <span>Я согласен(а) на обработку персональных данных в соответствии с <a href="#legal-privacy" style="color:var(--lime);text-decoration:underline">Политикой ПДн</a>.</span>
             </label>
-            <label class="flex items-start gap-3 text-body" style="color:var(--muted)">
-              <input type="checkbox" name="not_robot" required class="mt-1"/>
-              <span>Я не робот.</span>
-            </label>
+            <div class="space-y-2">
+              <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
+              <p class="text-label" style="color:var(--muted)">Подтвердите, что вы не робот.</p>
+            </div>
             <button type="submit" class="btn-amber px-8 py-3.5" style="text-transform:none;font-size:1rem">Заказать звонок</button>
           </form>
         </div>
@@ -2408,6 +2409,17 @@ if (openConsultFormBtn && consultFormWrap) {
       consultFormWrap.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'center' });
       const firstInput = consultFormWrap.querySelector('input[name="name"]');
       if (firstInput) firstInput.focus();
+    }
+  });
+}
+
+const consultForm = consultFormWrap ? consultFormWrap.querySelector('form') : null;
+if (consultForm) {
+  consultForm.addEventListener('submit', (e) => {
+    const captchaTokenInput = consultForm.querySelector('input[name="cf-turnstile-response"]');
+    if (!captchaTokenInput || !captchaTokenInput.value) {
+      e.preventDefault();
+      alert('Подтвердите капчу «Я не робот», затем отправьте заявку.');
     }
   });
 }
