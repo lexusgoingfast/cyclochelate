@@ -4,6 +4,18 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>CYTOCHELAT — Precision Ecology</title>
+<meta name="description" content="CYTOCHELAT — биотехнологии питания растений: NANO-5 хелаты, восстановление почвы и рост урожайности."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="CYTOCHELAT — Precision Ecology"/>
+<meta property="og:description" content="Биотехнологии питания растений: NANO-5 хелаты, восстановление почвы и рост урожайности."/>
+<meta property="og:image" content="/photo_2026-04-16%2023.39.40.jpeg"/>
+<meta property="og:image:type" content="image/jpeg"/>
+<meta property="og:image:width" content="1600"/>
+<meta property="og:image:height" content="1200"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="CYTOCHELAT — Precision Ecology"/>
+<meta name="twitter:description" content="Биотехнологии питания растений: NANO-5 хелаты, восстановление почвы и рост урожайности."/>
+<meta name="twitter:image" content="/photo_2026-04-16%2023.39.40.jpeg"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -941,10 +953,10 @@ h1.hero-title {
     <h2 class="text-headline font-semibold mb-12" style="color:var(--text)" data-i18n="apply.title">Регламент применения</h2>
 
     <div class="flex flex-wrap gap-2 mb-10">
-      <button class="px-5 py-2 rounded-full text-label font-semibold uppercase tracking-[0.06em]" style="background:var(--lime);color:var(--lime-on)" data-i18n="apply.tab1">Зерновые</button>
-      <button class="px-5 py-2 rounded-full text-label font-semibold uppercase tracking-[0.06em] ghost-border" style="color:var(--muted)" data-i18n="apply.tab2">Зернобобовые</button>
-      <button class="px-5 py-2 rounded-full text-label font-semibold uppercase tracking-[0.06em] ghost-border" style="color:var(--muted)" data-i18n="apply.tab3">Технические</button>
-      <button class="px-5 py-2 rounded-full text-label font-semibold uppercase tracking-[0.06em] ghost-border" style="color:var(--muted)" data-i18n="apply.tab4">Овощи / ягоды</button>
+      <button class="tab-btn active px-5 py-2 rounded-full text-label font-semibold uppercase tracking-[0.06em] ghost-border" onclick="switchTabData(1, this)" data-i18n="apply.tab1">Зерновые</button>
+      <button class="tab-btn px-5 py-2 rounded-full text-label font-semibold uppercase tracking-[0.06em] ghost-border" onclick="switchTabData(2, this)" data-i18n="apply.tab2">Зернобобовые</button>
+      <button class="tab-btn px-5 py-2 rounded-full text-label font-semibold uppercase tracking-[0.06em] ghost-border" onclick="switchTabData(3, this)" data-i18n="apply.tab3">Технические</button>
+      <button class="tab-btn px-5 py-2 rounded-full text-label font-semibold uppercase tracking-[0.06em] ghost-border" onclick="switchTabData(4, this)" data-i18n="apply.tab4">Овощи / ягоды</button>
     </div>
 
     <div class="apply-table-scroll">
@@ -957,22 +969,22 @@ h1.hero-title {
       </div>
       <div>
         <div class="grid grid-cols-4 px-8 py-6 transition-colors cursor-default" style="border-top:1px solid var(--bg-raise)" onmouseover="this.style.background='var(--bg-high)'" onmouseout="this.style.background='transparent'">
-          <span class="text-body font-semibold" style="color:var(--text)" data-i18n="apply.r1c1">Пшеница, рожь, ячмень</span>
-          <span class="text-body" style="color:var(--muted)" data-i18n="apply.r1c2">Кущение → трубка → флаг → налив</span>
-          <span class="text-body font-mono" style="color:var(--lime)">0.3–0.4 л/га</span>
-          <span class="text-body" style="color:var(--muted)" data-i18n="apply.r1c4">Натура зерна, клейковина II кл.</span>
+          <span id="apply-r1-c1" class="text-body font-semibold" style="color:var(--text)">Пшеница, рожь, ячмень</span>
+          <span id="apply-r1-c2" class="text-body" style="color:var(--muted)">Кущение → трубка → флаг → налив</span>
+          <span id="apply-r1-c3" class="text-body font-mono" style="color:var(--lime)">0.3–0.4 л/га</span>
+          <span id="apply-r1-c4" class="text-body" style="color:var(--muted)">Натура зерна, клейковина II кл.</span>
         </div>
         <div class="grid grid-cols-4 px-8 py-6 transition-colors cursor-default" style="border-top:1px solid var(--bg-raise)" onmouseover="this.style.background='var(--bg-high)'" onmouseout="this.style.background='transparent'">
-          <span class="text-body font-semibold" style="color:var(--text)" data-i18n="apply.r2c1">Гречиха</span>
-          <span class="text-body" style="color:var(--muted)" data-i18n="apply.r2c2">1–2 пары листьев → ветвление → плодообразование</span>
-          <span class="text-body font-mono" style="color:var(--lime)">0.3–0.4 л/га</span>
-          <span class="text-body" style="color:var(--muted)" data-i18n="apply.r2c4">Озерненность, снижение абортации</span>
+          <span id="apply-r2-c1" class="text-body font-semibold" style="color:var(--text)">Гречиха</span>
+          <span id="apply-r2-c2" class="text-body" style="color:var(--muted)">1–2 пары листьев → ветвление → плодообразование</span>
+          <span id="apply-r2-c3" class="text-body font-mono" style="color:var(--lime)">0.3–0.4 л/га</span>
+          <span id="apply-r2-c4" class="text-body" style="color:var(--muted)">Озерненность, снижение абортации</span>
         </div>
         <div class="grid grid-cols-4 px-8 py-6 transition-colors cursor-default" style="border-top:1px solid var(--bg-raise)" onmouseover="this.style.background='var(--bg-high)'" onmouseout="this.style.background='transparent'">
-          <span class="text-body font-semibold" style="color:var(--text)" data-i18n="apply.r3c1">Протравливание семян</span>
-          <span class="text-body" style="color:var(--muted)" data-i18n="apply.r3c2">Перед посевом</span>
-          <span class="text-body font-mono" style="color:var(--lime)">0.3–0.4 л/т</span>
-          <span class="text-body" style="color:var(--muted)" data-i18n="apply.r3c4">Всхожесть, энергия прорастания</span>
+          <span id="apply-r3-c1" class="text-body font-semibold" style="color:var(--text)">Протравливание семян</span>
+          <span id="apply-r3-c2" class="text-body" style="color:var(--muted)">Перед посевом</span>
+          <span id="apply-r3-c3" class="text-body font-mono" style="color:var(--lime)">0.3–0.4 л/т</span>
+          <span id="apply-r3-c4" class="text-body" style="color:var(--muted)">Всхожесть, энергия прорастания</span>
         </div>
       </div>
     </div>
@@ -1243,8 +1255,38 @@ h1.hero-title {
           Потому что результат — не на бумаге, а в бункере. Почва восстанавливается. Окупаемость — в первый сезон.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="mailto:info@cytochelat.com" class="btn-amber px-10 py-5 glow-amber" style="text-transform:none;font-size:1rem" data-i18n="cta.btn1">Запросить консультацию</a>
+          <button type="button" id="openConsultForm" class="btn-amber px-10 py-5 glow-amber" style="text-transform:none;font-size:1rem" data-i18n="cta.btn1">Запросить консультацию</button>
           <a href="#" class="btn-ghost px-10 py-5" style="font-size:1rem" data-i18n-html="cta.btn2">Скачать прайс-лист<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </div>
+        <div id="consultFormWrap" class="hidden mt-8 w-full rounded-2xl p-6 text-left" style="background:rgba(248,250,245,0.75);border:1px solid var(--ghost)">
+          <form action="https://formsubmit.co/cytochelate@gmail.com" method="POST" class="space-y-4">
+            <input type="hidden" name="_subject" value="Заявка с сайта CYTOCHELAT"/>
+            <input type="hidden" name="_captcha" value="true"/>
+            <input type="hidden" name="_template" value="table"/>
+            <input type="hidden" name="_next" value="https://cytochelat.com/#cta"/>
+            <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off"/>
+            <div>
+              <label for="consultName" class="text-label uppercase tracking-[0.06em]" style="color:var(--muted)">Имя</label>
+              <input id="consultName" name="name" type="text" required class="mt-2 w-full rounded-xl px-4 py-3 text-body" style="border:1px solid var(--ghost);background:var(--bg);color:var(--text)"/>
+            </div>
+            <div>
+              <label for="consultPhone" class="text-label uppercase tracking-[0.06em]" style="color:var(--muted)">Телефон</label>
+              <input id="consultPhone" name="phone" type="tel" required inputmode="tel" placeholder="+7 (___) ___-__-__" class="mt-2 w-full rounded-xl px-4 py-3 text-body" style="border:1px solid var(--ghost);background:var(--bg);color:var(--text)"/>
+            </div>
+            <div>
+              <label for="consultComment" class="text-label uppercase tracking-[0.06em]" style="color:var(--muted)">Комментарий</label>
+              <textarea id="consultComment" name="comment" rows="3" class="mt-2 w-full rounded-xl px-4 py-3 text-body" style="border:1px solid var(--ghost);background:var(--bg);color:var(--text)"></textarea>
+            </div>
+            <label class="flex items-start gap-3 text-body" style="color:var(--muted)">
+              <input type="checkbox" name="pdn_consent" required class="mt-1"/>
+              <span>Я согласен(а) на обработку персональных данных в соответствии с <a href="#legal-privacy" style="color:var(--lime);text-decoration:underline">Политикой ПДн</a>.</span>
+            </label>
+            <label class="flex items-start gap-3 text-body" style="color:var(--muted)">
+              <input type="checkbox" name="not_robot" required class="mt-1"/>
+              <span>Я не робот.</span>
+            </label>
+            <button type="submit" class="btn-amber px-8 py-3.5" style="text-transform:none;font-size:1rem">Заказать звонок</button>
+          </form>
         </div>
       </div>
     </div>
@@ -1415,7 +1457,7 @@ h1.hero-title {
   </div>
 </footer>
 
-<div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Файлы cookie">
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Файлы cookie" hidden>
   <div class="max-w-screen-xl mx-auto flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
     <p class="text-body flex-1 pr-4 m-0" style="color:var(--muted)" data-i18n="cookie.banner">
       Мы используем cookie и локальное хранилище для языка и работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с политикой обработки данных и файлов cookie.
@@ -2287,10 +2329,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const cookieBanner = document.getElementById('cookieBanner');
   const cookieBtn = document.getElementById('cookieAccept');
   try {
-    if (localStorage.getItem(cookieKey) === '1' && cookieBanner) {
-      cookieBanner.hidden = true;
+    if (cookieBanner) {
+      cookieBanner.hidden = localStorage.getItem(cookieKey) === '1';
     }
-  } catch (e) {}
+  } catch (e) {
+    if (cookieBanner) cookieBanner.hidden = false;
+  }
   if (cookieBtn && cookieBanner) {
     cookieBtn.addEventListener('click', () => {
       try {
@@ -2318,12 +2362,54 @@ document.addEventListener('DOMContentLoaded', () => {
   openFooterLegalFromHash();
 });
 
-// Tabs
-function switchTab(index, btn) {
-  document.querySelectorAll('[id^="tab-"]').forEach(t => t.classList.add('hidden'));
-  document.getElementById('tab-' + index).classList.remove('hidden');
+const applyTabsData = {
+  1: [
+    ["Пшеница, рожь, ячмень", "Кущение → трубка → флаг → налив", "0.3–0.4 л/га", "Натура зерна, клейковина II кл."],
+    ["Гречиха", "1–2 пары листьев → ветвление → плодообразование", "0.3–0.4 л/га", "Озерненность, снижение абортации"],
+    ["Протравливание семян", "Перед посевом", "0.3–0.4 л/т", "Всхожесть, энергия прорастания"]
+  ],
+  2: [
+    ["Горох, соя, нут", "2–4 листа → бутонизация → налив", "0.3–0.4 л/га", "Больше бобов и масса 1000 семян"],
+    ["Чечевица, фасоль", "Ветвление → цветение", "0.25–0.35 л/га", "Снижение стресса и выравнивание посева"],
+    ["Инокулированные семена", "Перед посевом", "0.2–0.3 л/т", "Дружные всходы и развитая корневая система"]
+  ],
+  3: [
+    ["Подсолнечник, рапс", "4–6 листьев → бутонизация", "0.3–0.5 л/га", "Повышение масличности и устойчивости"],
+    ["Кукуруза", "3–5 листьев → 7–9 листьев", "0.3–0.4 л/га", "Усиление вегетации и равномерность початков"],
+    ["Сахарная свекла", "Смыкание рядков", "0.3–0.4 л/га", "Повышение сахаристости и массы корнеплода"]
+  ],
+  4: [
+    ["Томаты, огурцы", "Рассада → цветение → плодоношение", "0.2–0.3 л/га", "Снижение сброса завязи и стрессов"],
+    ["Картофель", "Смыкание ботвы → бутонизация", "0.3–0.4 л/га", "Рост товарной фракции клубней"],
+    ["Ягодные культуры", "Перед цветением → после сбора", "0.2–0.3 л/га", "Качество ягоды и восстановление кустов"]
+  ]
+};
+
+function switchTabData(index, btn) {
+  const rows = applyTabsData[index];
+  if (!rows) return;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+  if (btn) btn.classList.add('active');
+  for (let i = 0; i < 3; i += 1) {
+    const row = rows[i];
+    document.getElementById(`apply-r${i + 1}-c1`).textContent = row[0];
+    document.getElementById(`apply-r${i + 1}-c2`).textContent = row[1];
+    document.getElementById(`apply-r${i + 1}-c3`).textContent = row[2];
+    document.getElementById(`apply-r${i + 1}-c4`).textContent = row[3];
+  }
+}
+
+const openConsultFormBtn = document.getElementById('openConsultForm');
+const consultFormWrap = document.getElementById('consultFormWrap');
+if (openConsultFormBtn && consultFormWrap) {
+  openConsultFormBtn.addEventListener('click', () => {
+    consultFormWrap.classList.toggle('hidden');
+    if (!consultFormWrap.classList.contains('hidden')) {
+      consultFormWrap.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'center' });
+      const firstInput = consultFormWrap.querySelector('input[name="name"]');
+      if (firstInput) firstInput.focus();
+    }
+  });
 }
 </script>
 </body>
