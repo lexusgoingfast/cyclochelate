@@ -16,6 +16,7 @@
 <meta name="twitter:title" content="CYTOCHELAT — Precision Ecology"/>
 <meta name="twitter:description" content="Биотехнологии питания растений: NANO-5 хелаты, восстановление почвы и рост урожайности."/>
 <meta name="twitter:image" content="/photo_2026-04-16%2023.39.40.jpeg"/>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -1261,6 +1262,7 @@ h1.hero-title {
         <div id="consultFormWrap" class="hidden mt-8 w-full rounded-2xl p-6 text-left" style="background:rgba(248,250,245,0.75);border:1px solid var(--ghost)">
           <form action="https://formsubmit.co/cytochelate@gmail.com" method="POST" class="space-y-4">
             <input type="hidden" name="_subject" value="Заявка с сайта CYTOCHELAT"/>
+            <input type="hidden" name="_captcha" value="true"/>
             <input type="hidden" name="_template" value="table"/>
             <input type="hidden" name="_next" value="https://cytochelat.com/#cta"/>
             <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off"/>
@@ -1281,7 +1283,7 @@ h1.hero-title {
               <span>Я согласен(а) на обработку персональных данных в соответствии с <a href="#legal-privacy" style="color:var(--lime);text-decoration:underline">Политикой ПДн</a>.</span>
             </label>
             <div class="space-y-2">
-              <altcha-widget id="consultAltcha" type="checkbox" language="ru"></altcha-widget>
+              <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
               <p class="text-label" style="color:var(--muted)">Подтвердите, что вы не робот.</p>
             </div>
             <button type="submit" class="btn-amber px-8 py-3.5" style="text-transform:none;font-size:1rem">Заказать звонок</button>
@@ -1307,11 +1309,6 @@ h1.hero-title {
         <p class="text-body max-w-xs mb-8" style="color:var(--muted)" data-i18n="footer.desc">
           Научный подход к питанию растений. Технологии в гармонии с природой. Новосибирск — 9 стран мира.
         </p>
-        <div class="space-y-2 mb-8 text-body" style="color:var(--muted)">
-          <div><a href="mailto:cytochelate@gmail.com" style="color:var(--muted);text-decoration:underline;text-underline-offset:2px">cytochelate@gmail.com</a></div>
-          <div>630097, г. Новосибирск, ул. Бердское шоссе, д. 4/1</div>
-          <div><a href="tel:+79137013013" style="color:var(--muted);text-decoration:underline;text-underline-offset:2px">+7 913 701-30-13</a></div>
-        </div>
         <div class="flex gap-3">
           <div class="w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-colors" style="background:var(--bg-card)" onmouseover="this.style.background='var(--bg-high)'" onmouseout="this.style.background='var(--bg-card)'">
             <span class="material-symbols-outlined text-base" style="color:var(--muted)">public</span>
@@ -2419,14 +2416,13 @@ if (openConsultFormBtn && consultFormWrap) {
 const consultForm = consultFormWrap ? consultFormWrap.querySelector('form') : null;
 if (consultForm) {
   consultForm.addEventListener('submit', (e) => {
-    const altchaInput = consultForm.querySelector('input[name="altcha"]');
-    if (!altchaInput || !altchaInput.value) {
+    const captchaTokenInput = consultForm.querySelector('input[name="cf-turnstile-response"]');
+    if (!captchaTokenInput || !captchaTokenInput.value) {
       e.preventDefault();
-      alert('Подтвердите ALTCHA («Я не робот»), затем отправьте заявку.');
+      alert('Подтвердите капчу «Я не робот», затем отправьте заявку.');
     }
   });
 }
 </script>
-<script type="module" src="/src/altcha-init.ts"></script>
 </body>
 </html>
