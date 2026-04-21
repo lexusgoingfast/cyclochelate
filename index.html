@@ -118,10 +118,10 @@ body {
   background: var(--amber);
   color: var(--amber-on);
   border-radius: 9999px;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
   transition: opacity 0.15s, transform 0.15s;
 }
 .btn-amber:hover { opacity: 0.88; }
@@ -156,8 +156,10 @@ body {
   border: 1px solid var(--ghost);
   color: var(--text);
   border-radius: 9999px;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
   transition: background 0.15s;
 }
 .btn-ghost:hover { background: var(--bg-raise); }
@@ -635,7 +637,7 @@ h1.hero-title {
         </div>
       </div>
 
-      <a href="#cta" class="btn-amber px-5 py-2 glow-amber" style="text-transform:none;font-size:0.875rem;font-weight:500;letter-spacing:normal" data-i18n="nav.contact">Связаться</a>
+      <a href="#cta" class="btn-amber px-5 py-2 glow-amber" data-i18n="nav.contact">Связаться</a>
     </div>
   </div>
 </nav>
@@ -671,7 +673,7 @@ h1.hero-title {
         </p>
 
         <div class="flex flex-wrap items-center gap-4">
-          <a href="#about" class="btn-amber btn-shiny px-8 py-3 glow-amber" style="font-size:0.875rem;font-weight:500;letter-spacing:normal;text-transform:none" data-i18n="hero.cta1">Узнать больше</a>
+          <a href="#about" class="btn-amber btn-shiny px-8 py-3 glow-amber" data-i18n="hero.cta1">Узнать больше</a>
           <a href="#cta" class="px-8 py-3 rounded-full text-sm font-medium" style="background:rgba(248,250,245,0.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(248,250,245,0.35);color:var(--text);transition:background 0.15s" onmouseover="this.style.background='rgba(248,250,245,0.75)'" onmouseout="this.style.background='rgba(248,250,245,0.18)'" data-i18n-html="hero.cta2">Запросить консультацию<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </div>
       </div>
@@ -724,7 +726,7 @@ h1.hero-title {
       </div>
 
       <div class="flex gap-3">
-        <a href="#products" class="btn-amber px-5 py-3.5" style="font-size:0.875rem;font-weight:500;letter-spacing:normal;text-transform:none" data-i18n="about.btn1">Смотреть линейку</a>
+        <a href="#products" class="btn-amber px-5 py-3.5" data-i18n="about.btn1">Смотреть линейку</a>
       </div>
     </div>
   </div>
@@ -1310,7 +1312,7 @@ h1.hero-title {
               <input type="checkbox" name="pdn_consent" required class="mt-1"/>
               <span>Я согласен(а) на&nbsp;обработку персональных данных в&nbsp;соответствии с&nbsp;<a href="/legal.html#legal-privacy" style="color:var(--lime);text-decoration:underline">Политикой персональных данных</a>.</span>
             </label>
-            <button type="submit" class="btn-amber px-8 py-3.5" style="text-transform:none;font-size:1rem">Заказать звонок</button>
+            <button type="submit" class="btn-amber px-8 py-3.5">Заказать звонок</button>
           </form>
         </div>
       </div>
@@ -1378,7 +1380,7 @@ h1.hero-title {
     </p>
     <div class="flex flex-wrap gap-3 shrink-0 items-center">
       <a href="/legal.html#legal-cookies" class="text-label font-medium uppercase c-muted hover:c-text" style="letter-spacing:0.06em" data-i18n="cookie.detail">Подробнее</a>
-      <button type="button" id="cookieAccept" class="btn-amber px-6 py-2.5" style="text-transform:none;font-size:0.875rem;font-weight:600" data-i18n="cookie.accept">Принять</button>
+      <button type="button" id="cookieAccept" class="btn-amber px-6 py-2.5" data-i18n="cookie.accept">Принять</button>
     </div>
   </div>
 </div>
