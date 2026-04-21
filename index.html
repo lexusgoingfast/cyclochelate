@@ -1287,7 +1287,7 @@ h1.hero-title {
             </div>
             <label class="flex items-start gap-3 text-body" style="color:var(--muted)">
               <input type="checkbox" name="pdn_consent" required class="mt-1"/>
-              <span>Я согласен(а) на обработку персональных данных в соответствии с <a href="#legal-privacy" style="color:var(--lime);text-decoration:underline">Политикой ПДн</a>.</span>
+              <span>Я согласен(а) на обработку персональных данных в соответствии с <a href="/legal.html#legal-privacy" style="color:var(--lime);text-decoration:underline">Политикой персональных данных</a>.</span>
             </label>
             <div class="space-y-2">
               <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
@@ -1316,14 +1316,6 @@ h1.hero-title {
         <p class="text-body max-w-xs mb-8" style="color:var(--muted)" data-i18n="footer.desc">
           Научный подход к питанию растений. Технологии в гармонии с природой. Новосибирск — 9 стран мира.
         </p>
-        <div class="flex gap-3">
-          <div class="w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-colors" style="background:var(--bg-card)" onmouseover="this.style.background='var(--bg-high)'" onmouseout="this.style.background='var(--bg-card)'">
-            <span class="material-symbols-outlined text-base" style="color:var(--muted)">public</span>
-          </div>
-          <div class="w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-colors" style="background:var(--bg-card)" onmouseover="this.style.background='var(--bg-high)'" onmouseout="this.style.background='var(--bg-card)'">
-            <span class="material-symbols-outlined text-base" style="color:var(--muted)">mail</span>
-          </div>
-        </div>
       </div>
       <div>
         <div class="text-label uppercase tracking-[0.1em] mb-6" style="color:var(--amber)" data-i18n="footer.nav">Навигация</div>
@@ -1345,117 +1337,15 @@ h1.hero-title {
       </div>
     </div>
 
-    <div class="mb-16" lang="ru">
+    <div class="mb-16">
       <div class="text-label uppercase tracking-[0.1em] mb-4" style="color:var(--amber)" data-i18n="footer.legal">Юридическая информация</div>
-      <p class="text-body mb-6 max-w-3xl" style="color:var(--muted)" data-i18n="footer.legal_intro">Документы в соответствии с законодательством РФ. Тексты юридических разделов на русском языке.</p>
-
-      <details id="legal-requisites" class="footer-legal-details">
-        <summary class="footer-legal-summary"><span data-i18n="footer.requisites">Реквизиты</span><span class="material-symbols-outlined footer-legal-chevron" aria-hidden="true">expand_more</span></summary>
-        <div class="footer-legal-body">
-          <h3 class="text-title font-semibold mb-4" style="color:var(--text)">Реквизиты и контакты оператора</h3>
-          <div class="legal-placeholder">
-            Реквизиты оператора персональных данных и контакты для обращений субъектов персональных данных.
-          </div>
-          <dl class="text-body space-y-2 legal-doc" style="color:var(--muted)">
-            <dt class="font-medium" style="color:var(--text)">Полное наименование</dt><dd>Общество с ограниченной ответственностью "СИЛА ЗЕМЛИ"</dd>
-            <dt class="font-medium pt-2" style="color:var(--text)">Сокращенное наименование</dt><dd>ООО «СИЛА ЗЕМЛИ»</dd>
-            <dt class="font-medium pt-2" style="color:var(--text)">ИНН / КПП</dt><dd>5409010783 / 540901001</dd>
-            <dt class="font-medium pt-2" style="color:var(--text)">ОГРН</dt><dd>195476010432</dd>
-            <dt class="font-medium pt-2" style="color:var(--text)">Юридический адрес</dt><dd>630097, г. Новосибирск, ул. Бердское шоссе, д. 4/1</dd>
-            <dt class="font-medium pt-2" style="color:var(--text)">Почтовый адрес</dt><dd>630097, г. Новосибирск, ул. Бердское шоссе, д. 4/1</dd>
-            <dt class="font-medium pt-2" style="color:var(--text)">Телефон</dt><dd><a href="tel:+79137013013">+7 913 701-30-13</a></dd>
-            <dt class="font-medium pt-2" style="color:var(--text)">E-mail</dt><dd><a href="mailto:cytochelate@gmail.com">cytochelate@gmail.com</a>; <a href="mailto:b5454@mail.ru">b5454@mail.ru</a></dd>
-            <dt class="font-medium pt-2" style="color:var(--text)">Расчетный счет</dt><dd>40702810523120001686</dd>
-            <dt class="font-medium pt-2" style="color:var(--text)">Банк</dt><dd>ФИЛИАЛ "НОВОСИБИРСКИЙ" АО "АЛЬФА-БАНК"</dd>
-            <dt class="font-medium pt-2" style="color:var(--text)">Корреспондентский счет</dt><dd>30101810600000000774</dd>
-            <dt class="font-medium pt-2" style="color:var(--text)">БИК</dt><dd>045004774</dd>
-            <dt class="font-medium pt-2" style="color:var(--text)">Директор</dt><dd>Швецов Денис Юрьевич</dd>
-          </dl>
-        </div>
-      </details>
-
-      <details id="legal-privacy" class="footer-legal-details">
-        <summary class="footer-legal-summary"><span data-i18n="footer.privacy_pd">Политика ПДн</span><span class="material-symbols-outlined footer-legal-chevron" aria-hidden="true">expand_more</span></summary>
-        <div class="footer-legal-body legal-doc">
-          <p>Настоящая Политика разработана во исполнение требований Федерального закона от 27.07.2006 № 152‑ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению их безопасности на сайте в сети Интернет (далее — Сайт).</p>
-          <p><strong style="color:var(--text)">Оператор персональных данных:</strong> юридическое лицо, указанное в блоке «Реквизиты и контакты оператора».</p>
-          <h3>1. Основные понятия</h3>
-          <p>Используются термины, предусмотренные ст. 3 152‑ФЗ, в том числе: персональные данные, обработка персональных данных, оператор, распространение персональных данных, трансграничная передача и др.</p>
-          <h3>2. Цели обработки персональных данных</h3>
-          <ul>
-            <li>обработка обращений и запросов пользователей, направленных через контактные данные (в т.ч. при использовании ссылок электронной почты);</li>
-            <li>сопровождение договорных и преддоговорных отношений (при их наличии);</li>
-            <li>направление информации о продукции и услугах при наличии согласия или иного правового основания;</li>
-            <li>ведение статистики и улучшение работы Сайта (в обезличенном виде, где это применимо).</li>
-          </ul>
-          <h3>3. Правовые основания обработки</h3>
-          <p>Обработка осуществляется на основании ст. 6, 10, 18 152‑ФЗ, в том числе: с согласия субъекта персональных данных; для исполнения договора; для заключения договора по инициативе субъекта; при обработке персональных данных, разрешённых субъектом для распространения; иных оснований, предусмотренных 152‑ФЗ и применимыми подзаконными актами.</p>
-          <h3>4. Категории и состав персональных данных</h3>
-          <p>Могут обрабатываться, в зависимости от канала обращения: фамилия, имя, отчество; контактный номер телефона; адрес электронной почты; наименование организации; иные сведения, сообщённые пользователем добровольно в обращении.</p>
-          <h3>5. Порядок и условия обработки. Сроки хранения</h3>
-          <p>Обработка осуществляется с использованием средств автоматизации и без использования таких средств. Хранение — не дольше, чем этого требуют цели обработки, если иной срок не предусмотрен законом или договором. По достижении целей обработки персональные данные подлежат уничтожению либо обезличиванию.</p>
-          <h3>6. Передача третьим лицам</h3>
-          <p>Оператор не раскрывает персональные данные третьим лицам, за исключением случаев, предусмотренных законодательством РФ, либо при наличии отдельного согласия субъекта. Могут привлекаться подрядчики (хостинг, ИТ‑сервисы) по договорам с обязанностью соблюдения конфиденциальности и требований безопасности.</p>
-          <h3>7. Трансграничная передача</h3>
-          <p>При необходимости трансграничной передачи персональных данных Оператор соблюдает требования ст. 12 152‑ФЗ.</p>
-          <h3>8. Меры по защите персональных данных</h3>
-          <p>Оператор принимает правовые, организационные и технические меры, необходимые для защиты персональных данных от неправомерного или случайного доступа, уничтожения, изменения, блокирования, копирования, распространения и иных неправомерных действий.</p>
-          <h3>9. Права субъекта персональных данных</h3>
-          <p>Субъект имеет право на получение информации об обработке его персональных данных, на уточнение, блокирование или уничтожение при нарушении закона, на отзыв согласия (если обработка основана на согласии), на обжалование действий или бездействия Оператора в уполномоченный орган по защите прав субъектов персональных данных (Роскомнадзор) и в судебном порядке — в соответствии со ст. 14, 15, 21 152‑ФЗ.</p>
-          <p>Обращения направляются на адрес электронной почты, указанный в реквизитах; срок ответа — в пределах, установленных законом. Жалоба на действия или бездействие оператора может быть направлена в уполномоченный орган по защите прав субъектов персональных данных (<a href="https://rkn.gov.ru" target="_blank" rel="noopener noreferrer">Роскомнадзор</a>).</p>
-          <h3>10. Обработка обезличенных данных (cookies и аналоги)</h3>
-          <p>Сведения об использовании cookie‑файлов и аналогичных технологий приведены в документе «Политика в отношении файлов cookie» в разделе Cookie ниже.</p>
-          <h3>11. Изменение Политики</h3>
-          <p>Оператор вправе вносить изменения в настоящую Политику; новая редакция вступает в силу с момента её размещения на Сайте, если иное не предусмотрено новой редакцией.</p>
-          <p class="text-label uppercase tracking-[0.06em] mt-8" style="color:var(--subtle)">Дата публикации: 16.04.2026</p>
-        </div>
-      </details>
-
-      <details id="legal-cookies" class="footer-legal-details">
-        <summary class="footer-legal-summary"><span data-i18n="footer.cookies_policy">Cookie</span><span class="material-symbols-outlined footer-legal-chevron" aria-hidden="true">expand_more</span></summary>
-        <div class="footer-legal-body legal-doc">
-          <p class="text-title font-semibold mb-4" style="color:var(--text)">Политика в отношении файлов cookie и локальных данных</p>
-          <p>Сайт может использовать файлы cookie и аналогичные технологии (локальное хранилище браузера).</p>
-          <h3>1. Какие данные хранятся на устройстве пользователя</h3>
-          <ul>
-            <li>выбор языка интерфейса (ключ в локальном хранилище браузера);</li>
-            <li>сведение о согласии на использование cookie и аналогичных технологий (локальное хранилище);</li>
-            <li>технические cookie, необходимые для работы отдельных функций Сайта (если применяются).</li>
-          </ul>
-          <h3>2. Сторонние ресурсы</h3>
-          <p>Сайт может подключать шрифты и иные ресурсы с серверов третьих лиц (например, сервисы Google Fonts, CDN). Такие поставщики могут получать техническую информацию (в т.ч. IP‑адрес, сведения о запросе) в соответствии со своими политиками конфиденциальности. Рекомендуем ознакомиться с их документами на официальных сайтах.</p>
-          <h3>3. Управление cookie</h3>
-          <p>Пользователь может удалить или заблокировать cookie в настройках браузера. Отключение cookie может повлиять на работу отдельных функций Сайта.</p>
-        </div>
-      </details>
-
-      <details id="legal-terms" class="footer-legal-details">
-        <summary class="footer-legal-summary"><span data-i18n="footer.user_agreement">Пользовательское соглашение</span><span class="material-symbols-outlined footer-legal-chevron" aria-hidden="true">expand_more</span></summary>
-        <div class="footer-legal-body legal-doc">
-          <h3>1. Общие положения</h3>
-          <p>Настоящее Пользовательское соглашение регулирует отношения между владельцем Сайта и пользователем при использовании материалов и сервисов Сайта. Используя Сайт, пользователь подтверждает, что ознакомился с настоящим Соглашением и Политикой в отношении обработки персональных данных.</p>
-          <h3>2. Публичная оферта и информационный характер материалов</h3>
-          <p>Материалы Сайта носят информационный характер и не являются публичной офертой в значении ст. 437 Гражданского кодекса Российской Федерации. Условия поставки продукции, цены и иные существенные условия определяются в отдельной документации и/или договорах с контрагентами.</p>
-          <h3>3. Интеллектуальная собственность</h3>
-          <p>Элементы дизайна, тексты, изображения, логотипы и иные объекты, размещённые на Сайте, охраняются законодательством об интеллектуальной собственности. Воспроизведение и распространение без согласия правообладателя не допускаются, за исключением случаев, прямо предусмотренных законом.</p>
-          <h3>4. Ограничение ответственности</h3>
-          <p>Сайт и материалы на нём предоставляются «как есть». Владелец Сайта не несёт ответственности за убытки, возникшие в связи с использованием или невозможностью использования Сайта, за действия третьих лиц и за содержание внешних ресурсов, на которые могут вести ссылки.</p>
-          <h3>5. Информационная и рекламная деятельность</h3>
-          <p>При размещении на Сайте материалов, отвечающих признакам рекламы по законодательству Российской Федерации (в том числе Федеральный закон от 13.03.2006 № 38‑ФЗ «О рекламе»), сведения об рекламодателе приводятся в реквизитах или в тексте материала в соответствии с требованиями закона.</p>
-          <h3>6. Применимое право и споры</h3>
-          <p>К отношениям применяется право Российской Федерации. Споры подлежат урегулированию в порядке, установленном законодательством РФ.</p>
-          <h3>7. Изменение Соглашения</h3>
-          <p>Владелец Сайта вправе изменять настоящее Соглашение; актуальная редакция размещается на Сайте.</p>
-          <p class="text-label uppercase tracking-[0.06em] mt-8" style="color:var(--subtle)">Дата публикации: 16.04.2026</p>
-        </div>
-      </details>
-
-      <details id="legal-consumers" class="footer-legal-details">
-        <summary class="footer-legal-summary"><span data-i18n="footer.consumers">Защита прав потребителей</span><span class="material-symbols-outlined footer-legal-chevron" aria-hidden="true">expand_more</span></summary>
-        <div class="footer-legal-body legal-doc">
-          <p>Права потребителей при покупке товаров для личных нужд защищаются законодательством о защите прав потребителей. Обращения направляются в уполномоченный орган по защите прав потребителей по месту жительства и по контактам региональных служб (в том числе <a href="https://rospotrebnadzor.gov.ru" target="_blank" rel="noopener noreferrer">Роспотребнадзор</a>).</p>
-        </div>
-      </details>
+      <ul class="space-y-3">
+        <li><a href="/legal.html#legal-requisites" class="text-body transition-colors" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer.requisites">Реквизиты</a></li>
+        <li><a href="/legal.html#legal-privacy" class="text-body transition-colors" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer.privacy_pd">Политика персональных данных</a></li>
+        <li><a href="/legal.html#legal-cookies" class="text-body transition-colors" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer.cookies_policy">Cookie</a></li>
+        <li><a href="/legal.html#legal-terms" class="text-body transition-colors" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer.user_agreement">Пользовательское соглашение</a></li>
+        <li><a href="/legal.html#legal-consumers" class="text-body transition-colors" style="color:var(--muted)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer.consumers">Защита прав потребителей</a></li>
+      </ul>
     </div>
 
     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4" style="border-top:1px solid var(--bg-card);padding-top:2rem">
@@ -1471,7 +1361,7 @@ h1.hero-title {
       Мы используем cookie и локальное хранилище для языка и работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с политикой обработки данных и файлов cookie.
     </p>
     <div class="flex flex-wrap gap-3 shrink-0 items-center">
-      <a href="#legal-cookies" class="text-label font-medium uppercase c-muted hover:c-text" style="letter-spacing:0.06em" data-i18n="cookie.detail">Подробнее</a>
+      <a href="/legal.html#legal-cookies" class="text-label font-medium uppercase c-muted hover:c-text" style="letter-spacing:0.06em" data-i18n="cookie.detail">Подробнее</a>
       <button type="button" id="cookieAccept" class="btn-amber px-6 py-2.5" style="text-transform:none;font-size:0.875rem;font-weight:600" data-i18n="cookie.accept">Принять</button>
     </div>
   </div>
@@ -1641,7 +1531,7 @@ const translations = {
     "footer.dealers": "Дилерам",
     "footer.legal": "Юридическая информация",
     "footer.requisites": "Реквизиты",
-    "footer.privacy_pd": "Политика ПДн",
+    "footer.privacy_pd": "Политика персональных данных",
     "footer.cookies_policy": "Cookie",
     "footer.user_agreement": "Пользовательское соглашение",
     "footer.consumers": "Защита прав потребителей",
@@ -2214,19 +2104,6 @@ function prefersReducedMotion() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-function openFooterLegalFromHash() {
-  const id = window.location.hash.replace(/^#/, '');
-  if (!id || !id.startsWith('legal-')) return;
-  const el = document.getElementById(id);
-  if (!el || el.tagName !== 'DETAILS') return;
-  el.open = true;
-  requestAnimationFrame(() => {
-    el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'nearest' });
-  });
-}
-
-window.addEventListener('hashchange', openFooterLegalFromHash);
-
 function initGalleryCarousel(trackId) {
   const track = document.getElementById(trackId);
   if (!track) return;
@@ -2367,7 +2244,6 @@ document.addEventListener('DOMContentLoaded', () => {
     barObserver.observe(el);
   });
 
-  openFooterLegalFromHash();
 });
 
 const applyTabsData = {
