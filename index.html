@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>CYTOCHELAT — Precision Ecology</title>
+<title>cytochelate – precision ecology</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"/>
 <link rel="apple-touch-icon" href="/favicon.png"/>
 <meta name="description" content="CYTOCHELAT — биотехнологии питания растений: NANO-5 хелаты, восстановление почвы и рост урожайности."/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="CYTOCHELAT — Precision Ecology"/>
+<meta property="og:site_name" content="cytochelate"/>
+<meta property="og:title" content="cytochelate – precision ecology"/>
 <meta property="og:description" content="Биотехнологии питания растений: NANO-5 хелаты, восстановление почвы и рост урожайности."/>
 <meta property="og:image" content="https://cytochelate.com/hero-share.jpg?v=1"/>
 <meta property="og:image:secure_url" content="https://cytochelate.com/hero-share.jpg?v=1"/>
@@ -18,33 +19,16 @@
 <meta property="og:image:width" content="343"/>
 <meta property="og:image:height" content="361"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="CYTOCHELAT — Precision Ecology"/>
+<meta name="twitter:title" content="cytochelate – precision ecology"/>
 <meta name="twitter:description" content="Биотехнологии питания растений: NANO-5 хелаты, восстановление почвы и рост урожайности."/>
 <meta name="twitter:image" content="https://cytochelate.com/hero-share.jpg?v=1"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      fontFamily: { sans: ['Inter', 'sans-serif'] },
-      fontSize: {
-        'display':  ['clamp(48px,6.5vw,88px)', { lineHeight: '0.95', letterSpacing: '-0.025em' }],
-        'headline': ['clamp(30px,3.8vw,48px)',  { lineHeight: '1.15', letterSpacing: '-0.02em'  }],
-        'title':    ['clamp(20px,2.2vw,28px)',   { lineHeight: '1.3',  letterSpacing: '-0.01em'  }],
-        'body-lg':  ['1.125rem',                 { lineHeight: '1.8'  }],
-        'body':     ['1rem',                     { lineHeight: '1.75' }],
-        'label':    ['0.8125rem',                { lineHeight: '1.5',  letterSpacing: '0.06em'   }],
-      },
-      borderRadius: {
-        DEFAULT: '1rem', sm: '0.75rem', md: '1rem', lg: '1.25rem', xl: '1.5rem',
-        '2xl': '1.75rem', '3xl': '2rem', full: '9999px',
-      },
-    }
-  }
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="image" href="/wheat.webp" type="image/webp"/>
+<script type="module" src="/src/main.ts"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"/></noscript>
 <style>
 :root {
   --bg:          #F8FAF5;
@@ -650,7 +634,7 @@ h1.hero-title {
 
 <!-- HERO -->
 <section class="relative overflow-hidden" style="height:100vh;height:100svh;height:100dvh;min-height:560px;background:var(--bg)">
-  <img src="/wheat.webp" alt="" class="absolute inset-0 w-full h-full object-cover" style="z-index:0;object-position:50% 20%"/>
+  <img src="/wheat.webp" alt="" width="4077" height="3726" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover" style="z-index:0;object-position:50% 20%"/>
   <div class="absolute left-0 right-0 bottom-0" style="top:64px;background:linear-gradient(to right, var(--hero-ol-a) 0%, var(--hero-ol-b) 45%, transparent 100%);z-index:1"></div>
 
   <div class="absolute left-0 right-0 z-10" style="top:calc(64px + 24px)">
@@ -693,7 +677,7 @@ h1.hero-title {
     <div class="relative">
       <div class="rounded-2xl overflow-hidden aspect-[4/5]" style="background:var(--bg-card)">
         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-hOEHH7BMlpSIndeMzoW2SikxvCB89C8uE401Zzs0ONAL4wcOWxt2_QiMSGc9FUR4zqxPul8xyj245DOYixvLgLLVZe2gtsyOOYL13D_EK-y31TouKfKzAsgwl31GJEAjJGNMgRjkCEAGf0DQM22aSU-st6X6r3KijwdvjvxSWP8wMB3m0YIEeSH2IHPAJU5dVW6HnWuCQjUaOm8QhFzii3qvnexfo9sqmtaVM7tnfwBAMAvkE1itqENeybENEu6q7CP6f0uwEu0"
-             alt="Wheat seedlings" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"/>
+             alt="Wheat seedlings" loading="lazy" decoding="async" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"/>
       </div>
       <div class="glass-card absolute -bottom-8 -right-8 p-7 rounded-2xl max-w-[260px]">
         <p class="text-body italic leading-relaxed mb-5" style="color:var(--muted)" data-i18n="about.quote">
@@ -816,7 +800,7 @@ h1.hero-title {
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
         <div class="rounded-2xl aspect-square mb-7 flex items-center justify-center overflow-hidden" style="background:var(--bg-raise)">
-          <img src="/universal-product.webp" alt="Universal" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
+          <img src="/universal-product.webp" alt="Universal" loading="lazy" decoding="async" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="products.universal">Универсальные</h4>
         <p class="text-body" style="color:var(--muted)" data-i18n="products.universal_desc">Базовый комплекс для старта вегетации и&nbsp;снятия гербицидного стресса.</p>
@@ -824,7 +808,7 @@ h1.hero-title {
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
         <div class="rounded-2xl aspect-square mb-7 flex items-center justify-center overflow-hidden" style="background:var(--bg-raise)">
-          <img src="/wheat-product.webp" alt="Wheat" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
+          <img src="/wheat-product.webp" alt="Wheat" loading="lazy" decoding="async" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="products.wheat">Пшеница</h4>
         <p class="text-body" style="color:var(--muted)" data-i18n="products.wheat_desc">Специализированная формула для зерновых: кущение и&nbsp;колошение.</p>
@@ -832,7 +816,7 @@ h1.hero-title {
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
         <div class="rounded-2xl aspect-square mb-7 flex items-center justify-center overflow-hidden" style="background:var(--bg-raise)">
-          <img src="/corn-product.webp" alt="Corn" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
+          <img src="/corn-product.webp" alt="Corn" loading="lazy" decoding="async" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="products.corn">Кукуруза</h4>
         <p class="text-body" style="color:var(--muted)" data-i18n="products.corn_desc">Усиленный состав для высокоурожайных культур: кукуруза, сорго.</p>
@@ -840,7 +824,7 @@ h1.hero-title {
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
         <div class="rounded-2xl aspect-square mb-7 flex items-center justify-center overflow-hidden" style="background:var(--bg-raise)">
-          <img src="/tech-product.webp" alt="Technical" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
+          <img src="/tech-product.webp" alt="Technical" loading="lazy" decoding="async" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="products.tech">Технические</h4>
         <p class="text-body" style="color:var(--muted)" data-i18n="products.tech_desc">Составы для технических культур: подсолнечник, рапс, лён.</p>
@@ -848,7 +832,7 @@ h1.hero-title {
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
         <div class="rounded-2xl aspect-square mb-7 flex items-center justify-center overflow-hidden" style="background:var(--bg-raise)">
-          <img src="/npk-product.webp" alt="NPK+ Chelate" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
+          <img src="/npk-product.webp" alt="NPK+ Chelate" loading="lazy" decoding="async" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="products.npk">NPK+ Хелат</h4>
         <p class="text-body" style="color:var(--muted)" data-i18n="products.npk_desc">Комплекс NPK в&nbsp;хелатной форме. pH 3–11. Не&nbsp;забивает форсунки.</p>
@@ -869,7 +853,7 @@ h1.hero-title {
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
         <div class="rounded-2xl aspect-square mb-7 flex items-center justify-center overflow-hidden" style="background:var(--bg-raise)">
-          <img src="/bioinsecticide.webp" alt="Bioinsecticide" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
+          <img src="/bioinsecticide.webp" alt="Bioinsecticide" loading="lazy" decoding="async" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="special.bioinsect">Биоинсектицид</h4>
         <p class="text-body" style="color:var(--muted)" data-i18n="special.bioinsect_desc">Споро-кристаллический комплекс бактерий. Защита от&nbsp;вредителей без токсичных соединений.</p>
@@ -877,7 +861,7 @@ h1.hero-title {
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
         <div class="rounded-2xl aspect-square mb-7 flex items-center justify-center overflow-hidden" style="background:var(--bg-raise)">
-          <img src="/biofungicide.webp" alt="Biofungicide" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
+          <img src="/biofungicide.webp" alt="Biofungicide" loading="lazy" decoding="async" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="special.biofung">Биофунгицид</h4>
         <p class="text-body" style="color:var(--muted)" data-i18n="special.biofung_desc">Биофунгицид для сельскохозяйственного производства по&nbsp;стандартам «органик».</p>
@@ -885,7 +869,7 @@ h1.hero-title {
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
         <div class="rounded-2xl aspect-square mb-7 flex items-center justify-center overflow-hidden" style="background:var(--bg-raise)">
-          <img src="/zootechnik.webp" alt="Zootechnik" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
+          <img src="/zootechnik.webp" alt="Zootechnik" loading="lazy" decoding="async" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="special.zoo">Зоотехник</h4>
         <p class="text-body" style="color:var(--muted)" data-i18n="special.zoo_desc">Натуральная органическая кормовая добавка для добавления в&nbsp;корм и&nbsp;питьё животных и&nbsp;птиц.</p>
