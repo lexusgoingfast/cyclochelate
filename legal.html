@@ -12,6 +12,8 @@
       --bg: #f8faf5;
       --bg-mid: #eef5e7;
       --bg-card: #e4ecd8;
+      --bg-high: #dde8ce;
+      --nav-bg: rgba(248,250,245,0.85);
       --text: #27351f;
       --muted: #596950;
       --subtle: #7d8c74;
@@ -33,18 +35,42 @@
     }
     .legal-doc ul { list-style: disc; padding-left: 1.2rem; }
     .legal-doc p + p { margin-top: 0.75rem; }
-    .legal-section { scroll-margin-top: 1.5rem; }
+    .legal-section { scroll-margin-top: 5.5rem; }
+    .glass-nav {
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(39,53,31,0.08);
+    }
+    .btn-amber {
+      background: var(--amber);
+      color: #2d3a24;
+      border-radius: 9999px;
+      font-weight: 500;
+      transition: opacity 0.15s ease;
+    }
+    .btn-amber:hover { opacity: 0.88; }
+    .c-muted { color: var(--muted); }
+    .c-text { color: var(--text); }
   </style>
 </head>
 <body>
-  <header class="py-6 border-b" style="border-color:var(--ghost);background:var(--bg-mid)">
-    <div class="max-w-screen-xl mx-auto px-4 md:px-8 flex items-center justify-between gap-4">
-      <a href="/" class="text-sm font-semibold" style="color:var(--text)">CYTOCHELAT</a>
-      <a href="/" class="text-sm font-medium" style="color:var(--muted)">На главную</a>
+  <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between gap-3">
+      <a href="/" class="flex items-center">
+        <img src="/cytologo.svg" alt="CYTOCHELAT" class="h-8 w-auto"/>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#legal-requisites" class="text-xs font-medium uppercase c-muted hover:c-text transition-colors">Реквизиты</a>
+        <a href="#legal-privacy" class="text-xs font-medium uppercase c-muted hover:c-text transition-colors">ПДн</a>
+        <a href="#legal-cookies" class="text-xs font-medium uppercase c-muted hover:c-text transition-colors">Cookie</a>
+        <a href="#legal-terms" class="text-xs font-medium uppercase c-muted hover:c-text transition-colors">Соглашение</a>
+      </div>
+      <a href="/" class="btn-amber px-5 py-2" style="text-transform:none;font-size:0.875rem;letter-spacing:normal">На главную</a>
     </div>
-  </header>
+  </nav>
 
-  <main class="py-12 md:py-16">
+  <main class="py-12 md:py-16" style="padding-top:calc(4rem + 2rem)">
     <div class="max-w-screen-xl mx-auto px-4 md:px-8">
       <h1 class="text-3xl md:text-4xl font-semibold mb-3">Юридическая информация</h1>
       <p class="text-base mb-10" style="color:var(--muted)">Документы в соответствии с законодательством РФ. Тексты юридических разделов на русском языке.</p>
