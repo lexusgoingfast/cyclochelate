@@ -125,6 +125,32 @@ body {
   transition: opacity 0.15s, transform 0.15s;
 }
 .btn-amber:hover { opacity: 0.88; }
+.btn-shiny {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-shiny::after {
+  content: "";
+  position: absolute;
+  top: -140%;
+  left: -35%;
+  width: 30%;
+  height: 380%;
+  transform: rotate(20deg);
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.38) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: btnShine 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes btnShine {
+  0%, 16% { left: -35%; }
+  42%, 100% { left: 130%; }
+}
 
 .btn-ghost {
   border: 1px solid var(--ghost);
@@ -381,6 +407,7 @@ h1.hero-title {
 @media (prefers-reduced-motion: reduce) {
   .gallery-thumb { transition: none; }
   .gallery-thumb:hover { transform: none; }
+  .btn-shiny::after { animation: none; }
 }
 .gallery-video-wrap {
   border-radius: 1rem;
@@ -644,7 +671,7 @@ h1.hero-title {
         </p>
 
         <div class="flex flex-wrap items-center gap-4">
-          <a href="#about" class="btn-amber px-8 py-3 glow-amber" style="font-size:0.875rem;font-weight:500;letter-spacing:normal;text-transform:none" data-i18n="hero.cta1">Узнать больше</a>
+          <a href="#about" class="btn-amber btn-shiny px-8 py-3 glow-amber" style="font-size:0.875rem;font-weight:500;letter-spacing:normal;text-transform:none" data-i18n="hero.cta1">Узнать больше</a>
           <a href="#cta" class="px-8 py-3 rounded-full text-sm font-medium" style="background:rgba(248,250,245,0.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(248,250,245,0.35);color:var(--text);transition:background 0.15s" onmouseover="this.style.background='rgba(248,250,245,0.75)'" onmouseout="this.style.background='rgba(248,250,245,0.18)'" data-i18n-html="hero.cta2">Запросить консультацию<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </div>
       </div>
