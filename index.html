@@ -1287,9 +1287,6 @@ h1.hero-title {
         <p class="text-body-lg mb-12" style="color:var(--muted)" data-i18n="cta.desc">
           Потому что результат — не на бумаге, а в бункере. Почва восстанавливается. Окупаемость — в первый сезон.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button type="button" id="openConsultForm" class="btn-amber px-10 py-5 glow-amber" style="text-transform:none;font-size:1rem" data-i18n="cta.btn1">Запросить консультацию</button>
-        </div>
         <div id="consultFormWrap" class="mt-8 w-full rounded-2xl p-4 sm:p-6 text-left" style="background:rgba(248,250,245,0.75);border:1px solid var(--ghost)">
           <form action="https://formsubmit.co/cytochelate@gmail.com" method="POST" class="space-y-4">
             <input type="hidden" name="_subject" value="Заявка с сайта CYTOCHELAT"/>
@@ -2302,15 +2299,7 @@ function switchTabData(index, btn) {
   }
 }
 
-const openConsultFormBtn = document.getElementById('openConsultForm');
 const consultFormWrap = document.getElementById('consultFormWrap');
-if (openConsultFormBtn && consultFormWrap) {
-  openConsultFormBtn.addEventListener('click', () => {
-    consultFormWrap.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'center' });
-    const firstInput = consultFormWrap.querySelector('input[name="name"]');
-    if (firstInput) firstInput.focus();
-  });
-}
 
 </script>
 </body>
