@@ -2234,6 +2234,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const consultForm = document.querySelector('#consultFormWrap form');
+  if (consultForm) {
+    const ensureNextUrl = () => {
+      const nextInput = consultForm.querySelector('input[name="_next"]');
+      if (nextInput) nextInput.value = 'https://cytochelate.com/#hero';
+    };
+    ensureNextUrl();
+    consultForm.addEventListener('submit', ensureNextUrl);
+  }
+
   // Bar animations
   const barObserver = new IntersectionObserver(entries => {
     entries.forEach(e => {
