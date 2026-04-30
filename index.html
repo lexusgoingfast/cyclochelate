@@ -310,6 +310,50 @@ body {
 }
 .lang-option:hover { background: var(--bg-card); color: var(--text); }
 .lang-option.active { color: var(--lime); font-weight: 600; }
+.mobile-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: 1px solid var(--ghost);
+  background: transparent;
+  color: var(--muted);
+  transition: background 0.15s, color 0.15s;
+}
+.mobile-menu-btn:hover { background: var(--bg-raise); color: var(--text); }
+.mobile-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 1rem;
+  right: 1rem;
+  padding: 0.875rem;
+  border: 1px solid var(--ghost);
+  border-radius: 1rem;
+  background: rgba(248,250,245,0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 14px 36px rgba(26,31,22,0.14);
+  display: none;
+  z-index: 90;
+}
+.mobile-menu-panel.open { display: block; }
+.mobile-menu-panel a {
+  display: block;
+  padding: 0.625rem 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.mobile-menu-panel a:hover { color: var(--text); }
+.mobile-menu-sep {
+  height: 1px;
+  margin: 0.375rem 0 0.5rem;
+  background: var(--ghost);
+}
 
 /* Hero title — desktop stays fixed (explicit <br/> + nowrap).
    Mobile becomes fluid: <br/> hidden, text-wrap balance, adaptive size.
@@ -319,6 +363,8 @@ h1.hero-title {
   line-height: 1.08;
 }
 @media (max-width: 768px) {
+  .mobile-menu-btn { display: inline-flex; }
+  .mobile-contact-link { display: none; }
   h1.hero-title {
     white-space: normal;
     line-height: 1.12;
@@ -601,7 +647,7 @@ h1.hero-title {
 <body>
 
 <!-- NAV -->
-<nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+<nav class="glass-nav fixed top-0 left-0 right-0 z-50" id="siteNav">
   <div class="max-w-screen-xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between gap-3">
     <a href="#" class="flex items-center">
       <img src="/cytologo.svg" alt="CYTOCHELATE" class="h-8 w-auto"/>
@@ -631,8 +677,20 @@ h1.hero-title {
         </div>
       </div>
 
-      <a href="#cta" class="btn-amber px-5 py-2 glow-amber" data-i18n="nav.contact">Связаться</a>
+      <a href="#cta" class="btn-amber px-5 py-2 glow-amber mobile-contact-link" data-i18n="nav.contact">Связаться</a>
+      <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenuPanel">
+        <span class="material-symbols-outlined" style="font-size:20px">menu</span>
+      </button>
     </div>
+  </div>
+  <div id="mobileMenuPanel" class="mobile-menu-panel">
+    <a href="#about" class="mobile-nav-link" data-i18n="nav.about">О&nbsp;продукте</a>
+    <a href="#products" class="mobile-nav-link" data-i18n="nav.products">Линейка</a>
+    <a href="#science" class="mobile-nav-link" data-i18n="nav.science">Наука</a>
+    <a href="#apply" class="mobile-nav-link" data-i18n="nav.apply">Применение</a>
+    <a href="#gallery" class="mobile-nav-link" data-i18n="nav.gallery">Галерея</a>
+    <div class="mobile-menu-sep"></div>
+    <a href="#cta" class="mobile-nav-link" data-i18n="nav.contact">Связаться</a>
   </div>
 </nav>
 
@@ -2094,10 +2152,30 @@ function toggleLangDropdown() {
   document.getElementById('langDropdown').classList.toggle('open');
 }
 
+function toggleMobileMenu(forceOpen) {
+  const panel = document.getElementById('mobileMenuPanel');
+  const btn = document.getElementById('mobileMenuBtn');
+  if (!panel || !btn) return;
+  const nextState = typeof forceOpen === 'boolean' ? forceOpen : !panel.classList.contains('open');
+  panel.classList.toggle('open', nextState);
+  btn.setAttribute('aria-expanded', String(nextState));
+}
+
 // Close dropdown on outside click
 document.addEventListener('click', (e) => {
   const switcher = document.getElementById('langSwitcher');
   if (switcher && !switcher.contains(e.target)) {
+    document.getElementById('langDropdown').classList.remove('open');
+  }
+  const nav = document.getElementById('siteNav');
+  if (nav && !nav.contains(e.target)) {
+    toggleMobileMenu(false);
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    toggleMobileMenu(false);
     document.getElementById('langDropdown').classList.remove('open');
   }
 });
@@ -2206,6 +2284,13 @@ function initGalleryCarousel(trackId) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+  }
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => toggleMobileMenu(false));
+  });
   if (currentLang !== 'ru') {
     switchLang(currentLang);
   }
