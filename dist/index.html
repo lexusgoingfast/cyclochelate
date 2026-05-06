@@ -438,6 +438,32 @@ h1.hero-title {
   }
 }
 
+.pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(248,250,245,0.55);
+  border: 1px solid var(--ghost);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.pdf-btn:hover {
+  background: var(--lime);
+  color: var(--lime-on);
+  transform: translateY(-1px);
+}
+.pdf-btn .material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
 .gallery-thumb {
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -914,7 +940,11 @@ h1.hero-title {
           <img src="/npk-product.webp" alt="NPK+ Chelate" loading="lazy" decoding="async" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="products.npk">CYTOCHELATE NPK+</h4>
-        <p class="text-body" style="color:var(--muted)" data-i18n-html="products.npk_desc">Высококонцентрированный NPK-комплекс в&nbsp;сочетании с&nbsp;гуминовым хелатором. Совместим с&nbsp;современными технологиями внесения и&nbsp;не&nbsp;забивает форсунки.</p>
+        <p class="text-body mb-5" style="color:var(--muted)" data-i18n-html="products.npk_desc">Высококонцентрированный NPK-комплекс в&nbsp;сочетании с&nbsp;гуминовым хелатором. Совместим с&nbsp;современными технологиями внесения и&nbsp;не&nbsp;забивает форсунки.</p>
+        <a href="/pdf/cytochelate-npk-plus.pdf" download class="pdf-btn" rel="noopener">
+          <span class="material-symbols-outlined" style="font-size:18px;line-height:1">download</span>
+          <span data-i18n="common.download_pdf">Скачать PDF</span>
+        </a>
       </div>
     </div>
   </div>
@@ -935,7 +965,11 @@ h1.hero-title {
           <img src="/bioinsecticide.webp" alt="Bioinsecticide" loading="lazy" decoding="async" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="special.bioinsect">CYTOCHELATE Биоинсектицид</h4>
-        <p class="text-body" style="color:var(--muted)" data-i18n="special.bioinsect_desc">Биологический комплекс для контроля широкого спектра насекомых-вредителей. Подходит для экологически ориентированного сельского хозяйства и&nbsp;интегрированных систем защиты растений.</p>
+        <p class="text-body mb-5" style="color:var(--muted)" data-i18n="special.bioinsect_desc">Биологический комплекс для контроля широкого спектра насекомых-вредителей. Подходит для экологически ориентированного сельского хозяйства и&nbsp;интегрированных систем защиты растений.</p>
+        <a href="/pdf/cytochelate-bioinsecticide.pdf" download class="pdf-btn" rel="noopener">
+          <span class="material-symbols-outlined" style="font-size:18px;line-height:1">download</span>
+          <span data-i18n="common.download_pdf">Скачать PDF</span>
+        </a>
       </div>
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
@@ -943,7 +977,11 @@ h1.hero-title {
           <img src="/biofungicide.webp" alt="Biofungicide" loading="lazy" decoding="async" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="special.biofung">CYTOCHELATE Биофунгицид</h4>
-        <p class="text-body" style="color:var(--muted)" data-i18n="special.biofung_desc">Биологическое решение для профилактики и&nbsp;снижения риска грибковых и&nbsp;бактериальных заболеваний. Способствует оздоровлению почвы и&nbsp;повышению устойчивости растений.</p>
+        <p class="text-body mb-5" style="color:var(--muted)" data-i18n="special.biofung_desc">Биологическое решение для профилактики и&nbsp;снижения риска грибковых и&nbsp;бактериальных заболеваний. Способствует оздоровлению почвы и&nbsp;повышению устойчивости растений.</p>
+        <a href="/pdf/cytochelate-biofungicide.pdf" download class="pdf-btn" rel="noopener">
+          <span class="material-symbols-outlined" style="font-size:18px;line-height:1">download</span>
+          <span data-i18n="common.download_pdf">Скачать PDF</span>
+        </a>
       </div>
 
       <div class="rounded-2xl p-9 group cursor-pointer bento-lift" style="background:var(--bg-card)">
@@ -951,7 +989,11 @@ h1.hero-title {
           <img src="/zootechnik.webp" alt="Zootechnik" loading="lazy" decoding="async" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"/>
         </div>
         <h4 class="text-sm font-semibold mb-3" style="color:var(--text)" data-i18n="special.zoo">CYTOCHELATE Зоотехник</h4>
-        <p class="text-body" style="color:var(--muted)" data-i18n="special.zoo_desc">Органическая кормовая добавка для сельскохозяйственных животных и&nbsp;птицы. Способствует улучшению обменных процессов, усвоению кормов и&nbsp;повышению продуктивности.</p>
+        <p class="text-body mb-5" style="color:var(--muted)" data-i18n="special.zoo_desc">Органическая кормовая добавка для сельскохозяйственных животных и&nbsp;птицы. Способствует улучшению обменных процессов, усвоению кормов и&nbsp;повышению продуктивности.</p>
+        <a href="/pdf/cytochelate-zootechnik.pdf" download class="pdf-btn" rel="noopener">
+          <span class="material-symbols-outlined" style="font-size:18px;line-height:1">download</span>
+          <span data-i18n="common.download_pdf">Скачать PDF</span>
+        </a>
       </div>
     </div>
   </div>
@@ -1519,6 +1561,7 @@ const translations = {
     "results.econ_stat1": "Снижение норм СЗР и удобрений",
     "results.econ_stat2": "Окупаемость применения",
     "common.more": "Подробнее",
+    "common.download_pdf": "Скачать PDF",
 
     "products.title": "Специализированные решения для различных культур.",
     "products.subtitle": "Линейка CYTOCHELATE разработана с учётом физиологических потребностей конкретных сельскохозяйственных культур и технологий выращивания.",
@@ -1691,6 +1734,7 @@ const translations = {
     "results.econ_stat1": "Lower fertilizer & CPP rates",
     "results.econ_stat2": "Application payback",
     "common.more": "Learn more",
+    "common.download_pdf": "Download PDF",
 
     "products.title": "Specialized solutions for different crops.",
     "products.subtitle": "The CYTOCHELATE lineup is designed around the physiological needs of specific agricultural crops and cultivation technologies.",
