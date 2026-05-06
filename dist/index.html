@@ -360,6 +360,8 @@ body {
 h1.hero-title {
   white-space: nowrap;
   line-height: 1.08;
+  font-size: clamp(40px, 5.4vw, 72px);
+  letter-spacing: -0.02em;
 }
 @media (max-width: 768px) {
   .mobile-menu-btn { display: inline-flex; }
@@ -367,7 +369,7 @@ h1.hero-title {
   h1.hero-title {
     white-space: normal;
     line-height: 1.12;
-    font-size: clamp(30px, 8.4vw, 44px);
+    font-size: clamp(28px, 7.4vw, 40px);
     text-wrap: balance;
     overflow-wrap: break-word;
     max-width: 100%;
@@ -717,17 +719,18 @@ h1.hero-title {
 
   <div class="absolute inset-0 flex items-center z-10" style="top:64px">
     <div class="max-w-screen-xl mx-auto px-4 md:px-8 w-full">
-      <div class="max-w-xl">
+      <div class="max-w-2xl">
         <h1 class="text-display font-semibold mb-5 hero-title" style="color:var(--text)" data-i18n-html="hero.title">
-          Низкомолекулярный гуминовый хелатор<br/>
+          Низкомолекулярный<br/>
+          гуминовый хелатор<br/>
           <span style="color:var(--lime)">нового поколения.</span>
         </h1>
 
-        <p class="text-body-lg mb-4" style="color:var(--text);text-shadow:0 1px 12px rgba(248,250,245,0.8), 0 0 24px rgba(248,250,245,0.6)" data-i18n-html="hero.subtitle">
-          Повышает эффективность питания растений, восстанавливает плодородие почвы<br/>и&nbsp;помогает получать стабильный урожай даже в&nbsp;стрессовых условиях.
+        <p class="text-body-lg mb-4 max-w-xl" style="color:var(--text);text-shadow:0 1px 12px rgba(248,250,245,0.8), 0 0 24px rgba(248,250,245,0.6)" data-i18n="hero.subtitle">
+          Повышает эффективность питания растений, восстанавливает плодородие почвы и&nbsp;помогает получать стабильный урожай даже в&nbsp;стрессовых условиях.
         </p>
 
-        <p class="text-body mb-7 font-medium" style="color:var(--lime);text-shadow:0 1px 12px rgba(248,250,245,0.8), 0 0 24px rgba(248,250,245,0.6)" data-i18n="hero.tagline">
+        <p class="text-body mb-7 font-medium max-w-xl" style="color:var(--lime);text-shadow:0 1px 12px rgba(248,250,245,0.8), 0 0 24px rgba(248,250,245,0.6)" data-i18n="hero.tagline">
           Технология NANO-5® — доставка активных веществ на&nbsp;клеточном уровне.
         </p>
 
@@ -1482,8 +1485,8 @@ const translations = {
     "hero.chip2": "NANO-5® хелат",
     "hero.chip3": "клеточный транспорт",
     "hero.chip4": "восстановление почвы",
-    "hero.title": 'Низкомолекулярный гуминовый хелатор<br/><span style="color:var(--lime)">нового поколения.</span>',
-    "hero.subtitle": "Повышает эффективность питания растений, восстанавливает плодородие почвы<br/>и помогает получать стабильный урожай даже в стрессовых условиях.",
+    "hero.title": 'Низкомолекулярный<br/>гуминовый хелатор<br/><span style="color:var(--lime)">нового поколения.</span>',
+    "hero.subtitle": "Повышает эффективность питания растений, восстанавливает плодородие почвы и помогает получать стабильный урожай даже в стрессовых условиях.",
     "hero.tagline": "Технология NANO-5® — доставка активных веществ на клеточном уровне.",
     "hero.cta1": "Узнать о технологии",
     "hero.cta2": 'Получить консультацию<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
@@ -1654,8 +1657,8 @@ const translations = {
     "hero.chip2": "NANO-5® chelate",
     "hero.chip3": "cellular delivery",
     "hero.chip4": "soil restoration",
-    "hero.title": 'Next-generation low-molecular<br/><span style="color:var(--lime)">humic chelator.</span>',
-    "hero.subtitle": "Improves plant nutrition efficiency, restores soil fertility<br/>and helps secure stable yields even under stress conditions.",
+    "hero.title": 'Next-generation<br/>low-molecular<br/><span style="color:var(--lime)">humic chelator.</span>',
+    "hero.subtitle": "Improves plant nutrition efficiency, restores soil fertility and helps secure stable yields even under stress conditions.",
     "hero.tagline": "NANO-5® technology — active ingredient delivery at the cellular level.",
     "hero.cta1": "Explore the technology",
     "hero.cta2": 'Request consultation<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>',
