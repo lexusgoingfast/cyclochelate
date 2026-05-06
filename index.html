@@ -354,6 +354,20 @@ body {
   margin: 0.375rem 0 0.5rem;
   background: var(--ghost);
 }
+.results-econ-stats {
+  width: 100%;
+}
+.results-econ-stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.results-econ-stat-value {
+  font-size: clamp(28px,8vw,40px);
+}
+.results-econ-stat-label {
+  letter-spacing: 0.08em;
+}
 
 /* Hero title — desktop stays fixed (explicit <br/> + nowrap).
    Mobile becomes fluid: <br/> hidden, text-wrap balance, adaptive size.
@@ -367,6 +381,37 @@ h1.hero-title {
 @media (max-width: 768px) {
   .mobile-menu-btn { display: inline-flex; }
   .mobile-contact-link { display: none; }
+  .results-econ-card {
+    padding: 1.125rem;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  .results-econ-card h3 {
+    font-size: 1.45rem;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+  }
+  .results-econ-card [data-i18n="results.econ_desc"] {
+    font-size: 1.03rem;
+    line-height: 1.65;
+  }
+  .results-econ-stats {
+    gap: 0.625rem;
+  }
+  .results-econ-stat-card {
+    padding: 0.85rem;
+    border-radius: 1rem;
+    min-height: 8.75rem;
+  }
+  .results-econ-stat-value {
+    font-size: 2.1rem;
+    margin-bottom: 0.45rem;
+  }
+  .results-econ-stat-label {
+    font-size: 0.7rem;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+  }
   h1.hero-title {
     white-space: normal;
     line-height: 1.12;
@@ -865,7 +910,7 @@ h1.hero-title {
       </div>
 
       <!-- Economics card -->
-      <div class="md:col-span-3 rounded-2xl p-6 md:p-11 flex flex-col md:flex-row gap-8 md:gap-12 items-center group cursor-pointer bento-lift" style="background:var(--bg-mid)">
+      <div class="results-econ-card md:col-span-3 rounded-2xl p-6 md:p-11 flex flex-col md:flex-row gap-8 md:gap-12 items-center group cursor-pointer bento-lift" style="background:var(--bg-mid)">
         <div class="md:w-1/2">
           <div class="text-label uppercase tracking-[0.1em] mb-6 transition-all duration-300 group-hover:tracking-[0.15em]" style="color:var(--muted)" data-i18n="results.econ_label">Экономика</div>
           <h3 class="text-title font-semibold mb-4" style="color:var(--text)" data-i18n="results.econ_title">Экономическая эффективность применения</h3>
@@ -873,14 +918,14 @@ h1.hero-title {
             Повышение коэффициента усвоения элементов питания позволяет снижать избыточное использование удобрений и&nbsp;СЗР. Высокая концентрация действующих веществ обеспечивает низкие нормы расхода и&nbsp;высокую окупаемость.
           </p>
         </div>
-        <div class="md:w-1/2 grid grid-cols-2 gap-3 md:gap-4 w-full min-w-0">
-          <div class="rounded-2xl p-5 md:p-7 min-w-0 transition-all duration-500 group-hover:scale-105" style="background:var(--bg-card)">
-            <div class="font-semibold leading-none tracking-tight mb-3 transition-all duration-500" style="font-size:clamp(28px,8vw,40px);color:var(--lime)">−30%</div>
-            <div class="text-label uppercase tracking-[0.08em]" style="color:var(--muted)" data-i18n="results.econ_stat1">Снижение норм СЗР и&nbsp;удобрений</div>
+        <div class="results-econ-stats md:w-1/2 grid grid-cols-2 gap-3 md:gap-4 w-full min-w-0">
+          <div class="results-econ-stat-card rounded-2xl p-5 md:p-7 min-w-0 transition-all duration-500 group-hover:scale-105" style="background:var(--bg-card)">
+            <div class="results-econ-stat-value font-semibold leading-none tracking-tight mb-3 transition-all duration-500" style="color:var(--lime)">−30%</div>
+            <div class="results-econ-stat-label text-label uppercase tracking-[0.08em]" style="color:var(--muted)" data-i18n="results.econ_stat1">Снижение норм СЗР и&nbsp;удобрений</div>
           </div>
-          <div class="rounded-2xl p-5 md:p-7 min-w-0 transition-all duration-500 group-hover:scale-105" style="background:var(--bg-card);transition-delay:0.1s">
-            <div class="font-semibold leading-none tracking-tight mb-3 transition-all duration-500" style="font-size:clamp(28px,8vw,40px);color:var(--amber)">×2.5</div>
-            <div class="text-label uppercase tracking-[0.08em]" style="color:var(--muted)" data-i18n="results.econ_stat2">Окупаемость применения</div>
+          <div class="results-econ-stat-card rounded-2xl p-5 md:p-7 min-w-0 transition-all duration-500 group-hover:scale-105" style="background:var(--bg-card);transition-delay:0.1s">
+            <div class="results-econ-stat-value font-semibold leading-none tracking-tight mb-3 transition-all duration-500" style="color:var(--amber)">×2.5</div>
+            <div class="results-econ-stat-label text-label uppercase tracking-[0.08em]" style="color:var(--muted)" data-i18n="results.econ_stat2">Окупаемость применения</div>
           </div>
         </div>
       </div>
